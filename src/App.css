@@ -1,0 +1,76 @@
+/* src/index.css (ou App.css) */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff; /* Fundo branco padrão */
+  color: #333;
+}
+a { color: inherit; text-decoration: none; }
+* { box-sizing: border-box; }
+
+/* Container global */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Espaçamento padrão das seções */
+.section-padding {
+  padding: 4rem 0;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 0;
+  }
+}
+
+/* Título padrão das seções */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-header h1, .section-header h2 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.75rem;
+}
+.section-header p {
+  font-size: 1.125rem;
+  color: #718096;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+/* --- Botões Globais --- */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1.125rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-primary-dark {
+  background-color: #f97316; /* Laranja */
+  color: #ffffff;
+}
+.btn-primary-dark:hover {
+  background-color: #ea580c; /* Laranja escuro */
+}
+.btn-secondary {
+  background-color: #ffffff;
+  color: #374151;
+  border-color: #d1d5db; /* Borda cinza */
+}
+.btn-secondary:hover {
+  background-color: #f9fafb; /* Cinza bem claro */
+}

@@ -1,0 +1,161 @@
+/* src/pages/PlanosPage.css */
+
+.plans-page-wrapper {
+  background-color: #ffffff;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  gap: 2rem;
+  max-width: 64rem; /* 1024px */
+  margin: 0 auto;
+}
+
+.plan-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e5e7eb; /* Borda cinza padrão */
+}
+/* Estilo do card destacado */
+.plan-card.highlighted {
+  border-color: #f97316; /* Laranja */
+}
+
+.plan-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f97316;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  margin-bottom: 1.5rem;
+}
+.price-amount {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+.price-period {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #718096;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+.plan-features li {
+  display: flex;
+  align-items: center;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+}
+.plan-features li svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #f97316;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Faz o botão do plano ocupar 100% */
+.plan-card .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* --- Media Queries (Responsividade) --- */
+@media (min-width: 768px) {
+  .plans-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  }
+}/* src/pages/PlanosPage.css */
+
+.plans-page-wrapper {
+  background-color: #ffffff;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  gap: 2rem;
+  max-width: 64rem; /* 1024px */
+  margin: 0 auto;
+}
+
+.plan-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e5e7eb; /* Borda cinza padrão */
+}
+/* Estilo do card destacado */
+.plan-card.highlighted {
+  border-color: #f97316; /* Laranja */
+}
+
+.plan-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f97316;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  margin-bottom: 1.5rem;
+}
+.price-amount {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+.price-period {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #718096;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+.plan-features li {
+  display: flex;
+  align-items: center;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+}
+.plan-features li svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #f97316;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Faz o botão do plano ocupar 100% */
+.plan-card .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* --- Media Queries (Responsividade) --- */
+@media (min-width: 768px) {
+  .plans-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  }
+}

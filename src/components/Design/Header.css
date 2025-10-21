@@ -1,0 +1,145 @@
+/* src/components/Header.css (Corrigido) */
+
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1rem 0;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between; /* Logo (esquerda) vs Itens (direita) */
+  align-items: center; 
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  border: none; /* Remove a caixa estranha */
+  outline: none; /* Remove a caixa estranha */
+  text-decoration: none;
+}
+
+/* Esconde o novo container no mobile */
+.nav-menu-desktop {
+  display: none;
+}
+
+/* Links do menu desktop (estilos base) */
+.nav-links a {
+  font-size: 1rem;
+  color: #4b5563;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0.25rem; /* Adiciona padding para alinhar */
+}
+.nav-links a:hover {
+  color: #000000;
+}
+.nav-links a.active {
+  color: #000000;
+  font-weight: 600;
+}
+
+/* Botões de ação desktop (estilos base) */
+.btn-login {
+  font-weight: 500;
+  color: #4b5563;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+.btn-login:hover {
+  color: #1d4ed8;
+  background-color: #f3f4f6;
+}
+.btn-register {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #f97316;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+.btn-register:hover {
+  background-color: #ea580c;
+}
+
+/* Botão do menu mobile */
+.mobile-menu-toggle {
+  display: block; /* Visível no mobile */
+}
+.mobile-menu-toggle button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #374151;
+  padding: 0.5rem; /* Facilita o clique */
+}
+
+/* Menu dropdown mobile */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 1rem;
+  gap: 1rem;
+}
+.mobile-menu a {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+.mobile-menu a:hover {
+  background-color: #f3f4f6;
+}
+.mobile-menu .btn-register {
+  text-align: center;
+}
+.mobile-menu hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 0.5rem 0;
+}
+
+
+/* --- Media Query para Desktop (Telas maiores) --- */
+@media (min-width: 768px) {
+  
+  /* 1. Mostra o container desktop e alinha tudo dentro dele */
+  .nav-menu-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Espaço entre os links e os botões */
+  }
+
+  /* 2. Mostra os links e botões como flex-items */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Espaço entre 'Início' e 'Planos' */
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espaço entre 'Login' e 'Criar Conta' */
+  }
+
+  /* 3. Esconde o botão mobile */
+  .mobile-menu-toggle {
+    display: none; 
+  }
+  .mobile-menu {
+    display: none;
+  }
+}
