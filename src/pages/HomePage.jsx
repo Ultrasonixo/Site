@@ -17,35 +17,18 @@ const HomePage = () => {
   ];
 
   const planos = [
-    {
-      name: "Plano Básico",
-      subtitle: "Para pequenas comunidades",
-      price: "29,90",
-      features: [ "Gestão de B.O.s", "Gestão de Perfis (até 50)", "Sistema de Anúncios", "Suporte Básico (Ticket)" ],
-      highlighted: false
-    },
-    {
-      name: "Plano Padrão",
-      subtitle: "O mais popular",
-      price: "49,90",
-      features: [ "Tudo do Básico", "Gestão de Perfis (Ilimitado)", "Relatórios e Estatísticas", "Administração RH Simplificada", "Suporte Prioritário (Discord)" ],
-      highlighted: true
-    },
-    {
-      name: "Plano Premium",
-      subtitle: "Gestão completa",
-      price: "79,90",
-      features: [ "Tudo do Padrão", "Gestão de Histórico e Promoções", "Controle de Alistamentos", "Hospedagem Inclusa Premium", "Suporte Dedicado 24/7" ],
-      highlighted: false
-    },
+    { name: "Plano Básico", subtitle: "Para pequenas comunidades", price: "29,90", features: ["Gestão de B.O.s", "Gestão de Perfis (até 50)", "Sistema de Anúncios", "Suporte Básico (Ticket)"], highlighted: false },
+    { name: "Plano Padrão", subtitle: "O mais popular", price: "49,90", features: ["Tudo do Básico", "Gestão de Perfis (Ilimitado)", "Relatórios e Estatísticas", "Administração RH Simplificada", "Suporte Prioritário (Discord)"], highlighted: true },
+    { name: "Plano Premium", subtitle: "Gestão completa", price: "79,90", features: ["Tudo do Padrão", "Gestão de Histórico e Promoções", "Controle de Alistamentos", "Hospedagem Inclusa Premium", "Suporte Dedicado 24/7"], highlighted: false },
   ];
 
   return (
-    <div className="homepage-wrapper"> {/* Classe raiz */}
+    <div className="homepage-wrapper">
 
       {/* --- Seção Hero --- */}
       <section className="hero-section section-padding">
         <div className="container hero-content">
+          <span className="hero-tag">A plataforma mais completa para Roleplay</span>
           <h1 className="hero-title">
             Portal Policial SGP-RP: Gestão Completa para Sua Comunidade
           </h1>
@@ -53,8 +36,11 @@ const HomePage = () => {
             Organize operações, analise dados e ofereça um portal profissional para seus cidadãos e policiais. Hospedagem e atualizações inclusas.
           </p>
           <div className="hero-actions">
-            <a href="#planos" className="btn btn-primary-light">
+            <a href="#planos" className="btn btn-primary-dark">
               Ver Planos e Assinar
+            </a>
+            <a href="#" className="btn btn-secondary-outline">
+              Ver Demonstração
             </a>
           </div>
         </div>
@@ -73,7 +59,6 @@ const HomePage = () => {
             {features.map((feature, index) => (
               <div key={index} className="feature-card">
                 <div className="feature-icon">
-                  {/* Renderiza o ícone do Lucide React */}
                   <feature.icon strokeWidth={1.5} />
                 </div>
                 <div className="feature-text">
@@ -95,21 +80,17 @@ const HomePage = () => {
               Escolha o plano ideal para as necessidades da sua comunidade RP.
             </p>
           </div>
-
           <div className="plans-grid">
             {planos.map((plano) => (
               <div
                 key={plano.name}
-                // Adiciona a classe 'highlighted' se plano.highlighted for true
                 className={`plan-card ${plano.highlighted ? 'highlighted' : ''}`}
               >
                 <h3 className="plan-subtitle">{plano.subtitle}</h3>
-                
                 <div className="plan-price">
                   <span className="price-amount">R$ {plano.price}</span>
                   <span className="price-period"> / por mês</span>
                 </div>
-
                 <ul className="plan-features">
                   {plano.features.map((feature) => (
                     <li key={feature}>
@@ -118,10 +99,8 @@ const HomePage = () => {
                     </li>
                   ))}
                 </ul>
-
                 <Link
                   to="/assinar" 
-                  // Define o estilo do botão com base no 'highlighted'
                   className={`btn ${
                     plano.highlighted ? 'btn-primary-dark' : 'btn-secondary'
                   }`}
@@ -143,7 +122,7 @@ const HomePage = () => {
           <p className="cta-subtitle">
             Escolha o plano ideal e comece a usar o SGP-RP hoje mesmo.
           </p>
-          <a href="#planos" className="btn btn-primary-light">
+          <a href="#planos" className="btn btn-primary-dark">
             Começar Agora
           </a>
         </div>

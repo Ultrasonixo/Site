@@ -1,18 +1,17 @@
-// src/App.jsx (Limp.o e Corrigido)
-
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// 1. CORREÇÃO: Importa o 'index.css' (onde está o .container)
-import './index.css'; 
+// Importe seu CSS global
+import './index.css';
 
-// Importe suas páginas e componentes
+// Importe suas páginas e componentes de layout
+import Header from './components/Header';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PlanosPage from './pages/PlanosPage';
-import Header from './components/Header';   
-import Footer from './components/Footer';   
+import LoginPage from './pages/LoginPage';
 
-// (Páginas temporárias para os links de login/registro funcionarem)
+// Páginas temporárias para os links de login/registro
 const LoginPage = () => (
   <div className="container" style={{ padding: '5rem 1rem', minHeight: '50vh', textAlign: 'center' }}>
     <h1>Página de Login</h1>
@@ -26,30 +25,23 @@ const RegistroPage = () => (
   </div>
 );
 
-
 function App() {
-  
   return (
+    // O BrowserRouter agora vive aqui, envolvendo toda a lógica do App.
     <BrowserRouter>
-      {/* 2. CORREÇÃO: Div limpa, sem classes Tailwind */}
-      <div>
-        
-        <Header /> 
-
+      {/* Esta div é o container principal do layout do site */}
+      <div className="app-layout">
+        <Header />
         <main>
           <Routes>
+            {/* Definição de todas as suas rotas */}
             <Route path="/" element={<HomePage />} />
             <Route path="/planos" element={<PlanosPage />} />
-            
-            {/* Rotas para Login e Registro */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/registrar" element={<RegistroPage />} />
-            
           </Routes>
         </main>
-
         <Footer />
-        
       </div>
     </BrowserRouter>
   );

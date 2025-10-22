@@ -1,70 +1,63 @@
-// src/components/Header.jsx (Estrutura Corrigida)
-
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import './Design/Header.css'; // Importa o CSS corrigido
+import { Menu, X, LogIn } from 'lucide-react'; 
+import './Design/Header.css'; // Importa o nosso novo ficheiro de estilos
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // Estado para controlar se o menu mobile está aberto ou fechado
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <header className="header">
-      <nav className="header-nav container">
+    // A classe 'header-open' é adicionada quando o menu está aberto no mobile
+    <header className={`header ${isMenuOpen ? 'header-open' : ''}`}>
+      <div className="container header-nav">
         
-        {/* 1. Logo */}
+        {/* Logótipo */}
         <Link to="/" className="logo">
+          {/* Pode adicionar o seu <img> aqui se quiser */}
           SGP-RP
         </Link>
 
-        {/* --- NOVO CONTAINER PARA OS ITENS DA DIREITA --- */}
+        {/* --- Menu para Desktop --- */}
         <div className="nav-menu-desktop">
-          {/* 2. Links de Navegação (Desktop) */}
-          <div className="nav-links">
-            <NavLink to="/">Início</NavLink>
-            <NavLink to="/planos">Planos</NavLink>
-          </div>
-
-          {/* 3. Botões de Ação (Desktop) */}
+          <nav className="nav-links">
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+              Início
+            </NavLink>
+            <NavLink to="/planos" className={({ isActive }) => (isActive ? 'active' : '')}>
+              Planos
+            </NavLink>
+          </nav>
           <div className="nav-actions">
-            <Link to="/login" className="btn-login">
-              Login
-            </Link>
-            <Link to="/registrar" className="btn-register">
-              Criar Conta
+            <Link to="/login" className="btn-register">
+               <i class="fa-solid fa-user"></i> Area do Cliente
             </Link>
           </div>
         </div>
-        {/* --- FIM DO NOVO CONTAINER --- */}
 
-
-        {/* 4. Botão do Menu Mobile (Mobile) */}
+        {/* --- Botão para Menu Mobile --- */}
         <div className="mobile-menu-toggle">
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Abrir menu"
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          <button onClick={toggleMenu} aria-label="Abrir menu">
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-      </nav>
+      </div>
 
-      {/* 5. Menu Dropdown (Mobile) */}
-      {isMobileMenuOpen && (
+      {/* --- Menu Dropdown Mobile --- */}
+      {isMenuOpen && (
         <div className="mobile-menu">
-          <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)}>
-            Início
-          </NavLink>
-          <NavLink to="/planos" onClick={() => setIsMobileMenuOpen(false)}>
-            Planos
-          </NavLink>
+          <NavLink to="/" onClick={() => setIsMenuOpen(false)}>Início</NavLink>
+          <NavLink to="/planos" onClick={() => setIsMenuOpen(false)}>Planos</NavLink>
           <hr />
-          <Link to="/login" className="btn-login" onClick={() => setIsMobileMenuOpen(false)}>
-            Login
-          </Link>
-          <Link to="/registrar" className="btn-register" onClick={() => setIsMobileMenuOpen(false)}>
-            Criar Conta
-          </Link>
+          <div className="mobile-actions">
+            <Link to="/login" className="btn-register" onClick={() => setIsMenuOpen(false)}>
+              <i class="fa-solid fa-user"></i> Area do Cliente
+            </Link>
+          </div>
         </div>
       )}
     </header>

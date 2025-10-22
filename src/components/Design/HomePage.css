@@ -1,13 +1,9 @@
 /* src/pages/HomePage.css */
 
-/* --- Classes Reutilizáveis --- */
-
-/* Define o espaçamento padrão das seções (antigo py-16 md:py-24) */
+/* --- Classes Reutilizáveis (Sem alteração de estrutura) --- */
 .section-padding {
   padding: 4rem 0;
 }
-
-/* Define o cabeçalho de uma seção (antigo text-center mb-12...) */
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -15,17 +11,17 @@
 .section-header h2 {
   font-size: 2.25rem;
   font-weight: 600;
-  color: #2d3748; /* Cinza escuro */
+  color: #2d3748;
   margin-bottom: 0.75rem;
 }
 .section-header p {
   font-size: 1.125rem;
-  color: #718096; /* Cinza médio */
-  max-width: 42rem; /* antigo max-w-2xl */
+  color: #718096;
+  max-width: 42rem;
   margin: 0 auto;
 }
 
-/* --- Botões Reutilizáveis --- */
+/* --- Botões: Agora usam as variáveis globais que definimos no index.css --- */
 .btn {
   display: inline-block;
   font-weight: 600;
@@ -33,109 +29,89 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   font-size: 1.125rem;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
+  margin: 0 0.5rem;
 }
 
-/* Botão branco com texto azul (Hero, CTA final) */
-.btn-primary-light {
-  background-color: #ffffff;
-  color: #2563eb; /* Azul */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.btn-primary-light:hover {
-  background-color: #f3f4f6; /* Cinza claro */
-}
-
-/* Botão laranja (Plano destacado) */
-.btn-primary-dark {
-  background-color: #f97316; /* Laranja */
-  color: #ffffff;
-}
-.btn-primary-dark:hover {
-  background-color: #ea580c; /* Laranja escuro */
-}
-
-/* Botão secundário (Plano normal) */
-.btn-secondary {
-  background-color: #ffffff;
-  color: #374151;
-  border-color: #d1d5db; /* Borda cinza */
-}
-.btn-secondary:hover {
-  background-color: #f9fafb; /* Cinza bem claro */
-}
-
-
-/* --- 1. Seção Hero --- */
+/* --- 1. Seção Hero (Reestilizada com Roxo) --- */
 .hero-section {
-  /* Gradiente (antigo from-blue-700 to-indigo-900) */
-  background-color: #2563eb; /* Cor de fallback */
-  background-image: linear-gradient(to bottom right, #2563eb, #3730a3);
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #111827;
   overflow: hidden;
-  /* Replicando o padding da section-padding mas sem o '0' no lado */
   padding: 5rem 0;
 }
-
 .hero-content {
   text-align: center;
   position: relative;
   z-index: 10;
 }
-
+.hero-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+  background-color: #f5f3ff; /* Roxo bem claro */
+  color: #6d28d9; /* Roxo principal */
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
 .hero-title {
-  font-size: 2.5rem; /* antigo text-4xl */
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   line-height: 1.2;
 }
-
 .hero-subtitle {
-  font-size: 1.125rem; /* antigo text-lg */
-  color: #e0e7ff; /* Tom de azul claro (antigo text-indigo-100) */
+  font-size: 1.125rem;
+  color: #6B7281;
   margin-bottom: 2rem;
-  max-width: 56rem; /* antigo max-w-3xl */
+  max-width: 56rem;
   margin-left: auto;
   margin-right: auto;
 }
-
-/* --- 2. Seção Features --- */
-.features-section {
-  background-color: #f9fafb; /* antigo bg-gray-50 */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
+/* --- 2. Seção Features (Reestilizada com Roxo) --- */
+.features-section {
+  background-color: #ffffff;
+}
 .features-grid {
   display: grid;
-  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
-
 .feature-card {
   background-color: #ffffff;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb; /* antigo border-gray-200 */
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  border: 1px solid #e5e7eb;
+  text-align: center;
   transition: all 0.3s ease;
 }
 .feature-card:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* antigo hover:shadow-md */
-  border-color: #93c5fd; /* antigo hover:border-blue-300 */
+  transform: translateY(-5px);
+  border-color: #6d28d9; /* Borda Roxa no hover */
 }
-
 .feature-icon {
-  flex-shrink: 0;
-  margin-top: 0.25rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f5f3ff; /* Fundo roxo claro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
 }
 .feature-icon svg {
-  width: 2rem; /* antigo w-8 */
-  height: 2rem; /* antigo h-8 */
-  color: #2563eb; /* antigo text-blue-600 */
+  width: 30px;
+  height: 30px;
+  color: #6d28d9; /* Ícone roxo */
 }
-
 .feature-text h3 {
   font-size: 1.125rem;
   font-weight: 600;
@@ -147,39 +123,36 @@
   color: #718096;
 }
 
-/* --- 3. Seção Planos --- */
+/* --- 3. Seção Planos (Reestilizada com Roxo) --- */
 .plans-section {
-  background-color: #ffffff;
+  background-color: #f9fafb;
 }
-
 .plans-grid {
   display: grid;
-  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  grid-template-columns: 1fr;
   gap: 2rem;
-  max-width: 64rem; /* antigo max-w-6xl */
+  max-width: 64rem;
   margin: 0 auto;
 }
-
 .plan-card {
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* antigo shadow-lg */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   border: 2px solid #e5e7eb;
 }
 .plan-card.highlighted {
-  border-color: #f97316; /* antigo border-orange-500 */
+  border-color: #6d28d9; /* Borda Roxa */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
-
 .plan-subtitle {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f97316;
+  color: #6d28d9; /* Texto Roxo */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
 }
-
 .plan-price {
   margin-bottom: 1.5rem;
 }
@@ -193,38 +166,35 @@
   font-weight: 400;
   color: #718096;
 }
-
 .plan-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem 0; /* antigo mb-8 */
+  margin: 0 0 2rem 0;
 }
 .plan-features li {
   display: flex;
   align-items: center;
   color: #4b5563;
-  margin-bottom: 0.75rem; /* antigo space-y-3 */
+  margin-bottom: 0.75rem;
 }
 .plan-features li svg {
   width: 1.25rem;
   height: 1.25rem;
-  color: #f97316;
+  color: #6d28d9; /* Ícone Roxo */
   margin-right: 0.75rem;
   flex-shrink: 0;
 }
-
-/* Faz o botão do plano ocupar 100% */
 .plan-card .btn {
   display: block;
   width: 100%;
   text-align: center;
+  margin: 0;
 }
 
-
-/* --- 4. Seção CTA Final --- */
+/* --- 4. Seção CTA Final (Sem grandes alterações) --- */
 .cta-section {
-  background-color: #2563eb; /* antigo bg-blue-600 */
-  color: #ffffff;
+  background-color: #f9fafb;
+  color: #111827;
 }
 .cta-content {
   text-align: center;
@@ -235,48 +205,23 @@
   margin-bottom: 1rem;
 }
 .cta-subtitle {
-  color: #dbeafe; /* antigo text-blue-100 */
+  color: #6B7281;
   margin-bottom: 2rem;
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
 }
 
-
 /* --- Media Queries (Responsividade) --- */
-
-/* Telas médias (antigo 'md:') */
 @media (min-width: 768px) {
-  .section-padding {
-    padding: 6rem 0;
-  }
-  .section-header h2 {
-    font-size: 2.5rem;
-  }
-  
-  .hero-title {
-    font-size: 3.75rem; /* antigo md:text-6xl */
-  }
-  .hero-subtitle {
-    font-size: 1.25rem; /* antigo md:text-xl */
-  }
-
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
-  }
-
-  .plans-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  }
-  
-  .cta-title {
-    font-size: 2.5rem;
-  }
+  .section-padding { padding: 6rem 0; }
+  .section-header h2 { font-size: 2.5rem; }
+  .hero-title { font-size: 3.75rem; }
+  .hero-subtitle { font-size: 1.25rem; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .plans-grid { grid-template-columns: repeat(3, 1fr); }
+  .cta-title { font-size: 2.5rem; }
 }
-
-/* Telas grandes (antigo 'lg:') */
 @media (min-width: 1024px) {
-  .features-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  }
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
 }

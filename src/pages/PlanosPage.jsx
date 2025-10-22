@@ -1,9 +1,10 @@
-// src/pages/PlanosPage.jsx (Versão 100% CSS Puro)
+// src/pages/PlanosPage.jsx
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
-import '../components/Design/PlanosPage.css'; // <-- IMPORTANTE: Importa o CSS
+// CORREÇÃO AQUI:
+import '../components/Design/PlanosPage.css'; // <-- Caminho corrigido
 
 // Dados dos planos (iguais aos seus)
 const planos = [
@@ -32,6 +33,10 @@ const PlanosPage = () => {
               // Classe 'highlighted' é adicionada se for true
               className={`plan-card ${plano.highlighted ? 'highlighted' : ''}`}
             >
+                {/* Eu notei que você não usou o plano.name em lugar nenhum.
+                  Talvez você queira trocá-lo pelo subtítulo?
+                  Ex: <h2 className="plan-name">{plano.name}</h2>
+                */}
               <h3 className="plan-subtitle">{plano.subtitle}</h3>
               
               <div className="plan-price">

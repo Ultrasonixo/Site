@@ -1,33 +1,52 @@
-/* src/pages/PlanosPage.css */
-
 .plans-page-wrapper {
   background-color: #ffffff;
 }
 
 .plans-grid {
   display: grid;
-  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  grid-template-columns: 1fr;
   gap: 2rem;
-  max-width: 64rem; /* 1024px */
+  max-width: 64rem;
   margin: 0 auto;
+  align-items: center; /* Alinha os cards verticalmente */
 }
 
 .plan-card {
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #e5e7eb; /* Borda cinza padrão */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 2px solid #e5e7eb;
+  
+  /* ANIMAÇÃO: Adiciona uma transição suave para todas as propriedades */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+/* ANIMAÇÃO: Efeito de "levantar" o card ao passar o mouse */
+.plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
 /* Estilo do card destacado */
 .plan-card.highlighted {
-  border-color: #f97316; /* Laranja */
+  border-color: #6d28d9; /* Roxo */
+  
+  /* ANIMAÇÃO: Faz o card destacado ser um pouco maior */
+  transform: scale(1.05);
 }
+
+/* ANIMAÇÃO: Efeito de hover ainda mais pronunciado para o card destacado */
+.plan-card.highlighted:hover {
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 12px 25px rgba(93, 29, 224, 0.15);
+}
+
 
 .plan-subtitle {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f97316;
+  color: #6d28d9; /* Roxo */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
@@ -61,101 +80,63 @@
 .plan-features li svg {
   width: 1.25rem;
   height: 1.25rem;
-  color: #f97316;
+  color: #6d28d9; /* Roxo */
   margin-right: 0.75rem;
   flex-shrink: 0;
 }
 
-/* Faz o botão do plano ocupar 100% */
 .plan-card .btn {
   display: block;
   width: 100%;
   text-align: center;
+  margin: 0;
 }
 
-/* --- Media Queries (Responsividade) --- */
-@media (min-width: 768px) {
-  .plans-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  }
-}/* src/pages/PlanosPage.css */
+/* --- INÍCIO DA CORREÇÃO: Estilos dos botões que faltavam --- */
 
-.plans-page-wrapper {
-  background-color: #ffffff;
-}
-
-.plans-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* 1 coluna no mobile */
-  gap: 2rem;
-  max-width: 64rem; /* 1024px */
-  margin: 0 auto;
-}
-
-.plan-card {
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #e5e7eb; /* Borda cinza padrão */
-}
-/* Estilo do card destacado */
-.plan-card.highlighted {
-  border-color: #f97316; /* Laranja */
-}
-
-.plan-subtitle {
-  font-size: 0.875rem;
+/* Estilo base para os botões nesta página */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: #f97316;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-
-.plan-price {
-  margin-bottom: 1.5rem;
-}
-.price-amount {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-}
-.price-period {
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: #718096;
-}
-
-.plan-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem 0;
-}
-.plan-features li {
-  display: flex;
-  align-items: center;
-  color: #4b5563;
-  margin-bottom: 0.75rem;
-}
-.plan-features li svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #f97316;
-  margin-right: 0.75rem;
-  flex-shrink: 0;
-}
-
-/* Faz o botão do plano ocupar 100% */
-.plan-card .btn {
-  display: block;
-  width: 100%;
   text-align: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* Garante que o link não tenha sublinhado */
 }
+
+/* Botão roxo principal (para o plano destacado) */
+.btn-primary-dark {
+  background-color: #6d28d9;
+  color: #ffffff;
+  border-color: #6d28d9;
+}
+.btn-primary-dark:hover {
+  background-color: #5b21b6;
+  border-color: #5b21b6;
+}
+
+/* Botão branco secundário (para os outros planos) */
+.btn-secondary {
+  background-color: #ffffff;
+  color: #374151;
+  border-color: #e5e7eb;
+}
+.btn-secondary:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* --- FIM DA CORREÇÃO --- */
+
 
 /* --- Media Queries (Responsividade) --- */
 @media (min-width: 768px) {
   .plans-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
+

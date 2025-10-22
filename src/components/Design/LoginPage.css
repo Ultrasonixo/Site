@@ -1,0 +1,146 @@
+/* src/pages/LoginPage.css */
+
+.login-page-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f3ff; /* Fundo roxo bem claro */
+  padding: 2rem;
+}
+
+.login-card {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-card h2 {
+  font-size: 1.75rem;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+/* Botão do Google */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.google-btn:hover {
+  background-color: #f9fafb;
+}
+.google-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.75rem;
+}
+
+/* Divisor "ou" */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #9ca3af;
+  margin: 1.5rem 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e5e7eb;
+}
+.divider span {
+  padding: 0 1rem;
+  font-size: 0.875rem;
+}
+
+/* Formulário e Inputs */
+.input-group {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+.input-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--color-primary, #6d28d9);
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2);
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 0.875rem;
+  color: var(--color-primary, #6d28d9);
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Botão de Entrar */
+.login-btn {
+  width: 100%;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-primary, #6d28d9);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.login-btn:hover {
+  background-color: var(--color-primary-dark, #5b21b6);
+}
+
+/* Link para Criar Conta */
+.signup-link {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+.signup-link a {
+  color: var(--color-primary, #6d28d9);
+  font-weight: 500;
+  text-decoration: none;
+}
+.signup-link a:hover {
+  text-decoration: underline;
+}
