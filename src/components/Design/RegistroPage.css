@@ -1,0 +1,92 @@
+/* src/components/Design/RegistroPage.css */
+
+.register-page-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px); /* Ajuste a altura se o header/footer forem diferentes */
+  background-color: var(--color-primary-light, #f5f3ff); /* Usa variável global */
+  padding: 2rem;
+}
+
+.register-card {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.register-card h2 {
+  font-size: 1.75rem;
+  color: var(--color-dark, #111827);
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos de formulário (reutilizados de LoginPage.css com nomes de classe diferentes se necessário) */
+.input-group {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+.input-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-secondary, #374151);
+  margin-bottom: 0.5rem;
+}
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border, #d1d5db);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--color-primary, #6d28d9);
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2);
+}
+
+.error-message {
+  color: #ef4444; /* Vermelho para erros */
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-align: left; /* Alinha o erro à esquerda */
+}
+
+/* Botão de Criar Conta */
+.register-btn {
+  width: 100%;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-primary, #6d28d9);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem; /* Espaço acima do botão */
+}
+.register-btn:hover {
+  background-color: var(--color-primary-dark, #5b21b6);
+}
+
+/* Link para Entrar */
+.login-link {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-subtle, #4b5563);
+}
+.login-link a {
+  color: var(--color-primary, #6d28d9);
+  font-weight: 500;
+  text-decoration: none;
+}
+.login-link a:hover {
+  text-decoration: underline;
+}

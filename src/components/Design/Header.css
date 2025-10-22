@@ -1,145 +1,184 @@
-/* src/components/Header.css (Corrigido) */
+/* src/components/Design/Header.css (Completo Final) */
 
 .header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  background-color: var(--color-background); /* Usa variável */
+  border-bottom: 1px solid var(--color-border); /* Usa variável */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  position: sticky; top: 0; z-index: 50;
   padding: 1rem 0;
+  transition: background-color 0.3s ease; /* Transição de fundo */
 }
-
 .header-nav {
   display: flex;
-  justify-content: space-between; /* Logo (esquerda) vs Itens (direita) */
-  align-items: center; 
+  justify-content: space-between;
+  align-items: center;
 }
-
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1d4ed8;
-  border: none; /* Remove a caixa estranha */
-  outline: none; /* Remove a caixa estranha */
+  color: var(--color-primary); /* Usa variável */
+  border: none;
+  outline: none;
   text-decoration: none;
 }
 
-/* Esconde o novo container no mobile */
-.nav-menu-desktop {
-  display: none;
-}
-
-/* Links do menu desktop (estilos base) */
-.nav-links a {
-  font-size: 1rem;
-  color: #4b5563;
-  transition: color 0.3s ease;
-  padding: 0.5rem 0.25rem; /* Adiciona padding para alinhar */
-}
-.nav-links a:hover {
-  color: #000000;
-}
-.nav-links a.active {
-  color: #000000;
-  font-weight: 600;
-}
-
-/* Botões de ação desktop (estilos base) */
-.btn-login {
-  font-weight: 500;
-  color: #4b5563;
-  padding: 0.5rem 0.75rem;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-}
-.btn-login:hover {
-  color: #1d4ed8;
-  background-color: #f3f4f6;
-}
-.btn-register {
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #6d28d9;
-  padding: 0.5rem 1.25rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease;
-}
-.btn-register:hover {
-  background-color: #511da3;
-}
-
-/* Botão do menu mobile */
-.mobile-menu-toggle {
-  display: block; /* Visível no mobile */
-}
+/* Esconde o menu desktop no mobile */
+.nav-menu-desktop { display: none; }
+.mobile-menu-toggle { display: flex; align-items: center; } /* Alinha botões mobile */
 .mobile-menu-toggle button {
   background: none;
   border: none;
   cursor: pointer;
-  color: #374151;
-  padding: 0.5rem; /* Facilita o clique */
+  color: var(--color-secondary); /* Usa variável */
+  padding: 0.5rem;
 }
+
+/* Links (base) */
+.nav-links a {
+  font-size: 1rem;
+  color: var(--color-subtle); /* Usa variável */
+  transition: color 0.3s ease;
+  padding: 0.5rem 0.25rem;
+}
+.nav-links a:hover {
+  color: var(--color-dark); /* Usa variável */
+}
+.nav-links a.active {
+  color: var(--color-primary); /* Usa variável */
+  font-weight: 600;
+}
+
+/* Container de Ações (Botão Tema + Login/User) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre botões */
+}
+
+/* Botão Área Cliente / Login (não logado) */
+.btn-register {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-primary); /* Usa variável */
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-register i { font-size: 0.9em; }
+.btn-register:hover { background-color: var(--color-primary-dark); } /* Usa variável */
 
 /* Menu dropdown mobile */
 .mobile-menu {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  border-top: 1px solid #e5e7eb;
+  background-color: var(--color-background); /* Usa variável */
+  border-top: 1px solid var(--color-border);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute;
   width: 100%;
   left: 0;
   padding: 1rem;
   gap: 1rem;
+  transition: background-color 0.3s ease;
 }
-.mobile-menu a {
+.mobile-menu a { /* Applies to NavLink inside mobile menu */
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 6px;
+  color: var(--color-secondary); /* Usa variável */
+  display: block; /* Ensure it takes full width if needed */
 }
 .mobile-menu a:hover {
-  background-color: #f3f4f6;
+  background-color: var(--color-background-light); /* Usa variável */
 }
+.mobile-menu .mobile-actions { margin-top: 1rem; }
 .mobile-menu .btn-register {
   text-align: center;
+  width: 100%;
+  justify-content: center;
 }
 .mobile-menu hr {
   border: none;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border); /* Usa variável */
   margin: 0.5rem 0;
 }
 
-
-/* --- Media Query para Desktop (Telas maiores) --- */
+/* --- Media Query para Desktop --- */
 @media (min-width: 768px) {
-  
-  /* 1. Mostra o container desktop e alinha tudo dentro dele */
-  .nav-menu-desktop {
-    display: flex;
-    align-items: center;
-    gap: 2rem; /* Espaço entre os links e os botões */
-  }
+  .nav-menu-desktop { display: flex; align-items: center; gap: 2rem; }
+  .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-actions { display: flex; align-items: center; gap: 0.75rem; } /* Define gap para desktop */
+  .mobile-menu-toggle { display: none; }
+  .mobile-menu { display: none; }
+}
 
-  /* 2. Mostra os links e botões como flex-items */
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; /* Espaço entre 'Início' e 'Planos' */
-  }
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* Espaço entre 'Login' e 'Criar Conta' */
-  }
+/* --- Widget do Utilizador Logado (Desktop) --- */
+.user-widget {
+  position: relative;
+}
+.user-widget-button {
+  display: inline-flex; align-items: center; gap: 0.5rem; background: none; border: none;
+  cursor: pointer; font-size: 0.9rem; font-weight: 500; color: var(--color-secondary); /* Usa variável */
+  padding: 0.5rem 0.75rem; border-radius: 6px; transition: background-color 0.2s ease, color 0.2s ease;
+}
+.user-widget-button:hover, .user-widget-button:focus {
+  background-color: var(--color-background-light); color: var(--color-dark); outline: none; /* Usam variáveis */
+}
+.user-widget-button svg { color: var(--color-subtle); } /* Usa variável */
 
-  /* 3. Esconde o botão mobile */
-  .mobile-menu-toggle {
-    display: none; 
-  }
-  .mobile-menu {
-    display: none;
-  }
+/* --- Dropdown Menu (Desktop) --- */
+.user-dropdown {
+  position: absolute; top: calc(100% + 10px); right: 0; min-width: 200px;
+  background-color: var(--color-background); border-radius: 8px; border: 1px solid var(--color-border); /* Usam variáveis */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); padding: 0.5rem 0; z-index: 60;
+  animation: fadeInDown 0.2s ease-out;
+}
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.dropdown-item, .mobile-dropdown-item {
+  display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1rem;
+  font-size: 0.9rem; color: var(--color-secondary); text-decoration: none; /* Usa variável */
+  white-space: nowrap; cursor: pointer; background: none; border: none;
+  width: 100%; text-align: left;
+}
+.dropdown-item:hover, .mobile-dropdown-item:hover {
+  background-color: var(--color-background-light); color: var(--color-dark); /* Usam variáveis */
+}
+.dropdown-item svg, .mobile-dropdown-item svg { color: var(--color-subtle); flex-shrink: 0; } /* Usa variável */
+.dropdown-divider { border: none; border-top: 1px solid var(--color-border); margin: 0.5rem 0; } /* Usa variável */
+.dropdown-item-logout:hover, .mobile-dropdown-item-logout:hover {
+  background-color: #fef2f2; color: #ef4444;
+}
+[data-theme='dark'] .dropdown-item-logout:hover { /* Ajuste hover dark */
+    background-color: rgba(239, 68, 68, 0.1);
+}
+.dropdown-item-logout:hover svg, .mobile-dropdown-item-logout:hover svg { color: #ef4444; }
+
+/* --- Botão de Toggle de Tema --- */
+.theme-toggle-button {
+  background: none; border: 1px solid transparent; padding: 0.4rem; border-radius: 50%;
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  color: var(--color-subtle); transition: background-color 0.2s ease, color 0.2s ease; /* Usa variável */
+}
+.theme-toggle-button:hover {
+  background-color: var(--color-background-light); color: var(--color-dark); /* Usam variáveis */
+}
+.mobile-theme-toggle { display: none; }
+
+/* Estilos Mobile Adicionais */
+.mobile-menu .mobile-user-greeting {
+    display: block; padding: 0.5rem 1rem; font-weight: 600; color: var(--color-dark); /* Usa variável */
+    margin-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); /* Usa variável */
+}
+
+.mobile-menu .mobile-dropdown-item-logout { margin-top: 0.5rem; }
+
+/* Ajustes Mobile */
+@media (max-width: 768px) {
+  .mobile-theme-toggle { display: inline-flex; margin-right: 0.5rem; }
+  /* .nav-actions rule is not strictly needed here as gap is handled by parent */
 }

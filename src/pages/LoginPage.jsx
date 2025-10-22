@@ -10,7 +10,7 @@ import {
 } from 'firebase/auth';
 
 // Importar o CSS para estilizar a página
-import './Design/LoginPage.css';
+import '../components/Design/LoginPage.css';
 
 // Ícone do Google (SVG como componente React para facilitar)
 const GoogleIcon = () => (

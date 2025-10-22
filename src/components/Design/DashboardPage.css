@@ -1,0 +1,411 @@
+/* src/components/Design/DashboardPage.css (Completo e Final) */
+
+/* Container principal - organiza Top Bar e Corpo */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background-color: var(--color-background-light, #f9fafb); */ /* REMOVIDO */
+}
+
+/* --- Barra Superior --- */
+.dashboard-top-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-background, #ffffff); /* Fundo branco */
+  padding: 0 1.5rem; /* Padding horizontal */
+  height: 70px; /* Altura da barra */
+  flex-shrink: 0; /* Impede que encolha */
+  position: sticky; /* Fixa no topo */
+  top: 0;
+  z-index: 40; /* Garante que fique acima do conteúdo, mas abaixo de modais, etc. */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); /* Sombra sutil */
+}
+
+/* Botão de Menu Mobile (Hambúrguer) */
+.mobile-sidebar-toggle {
+    display: none; /* Escondido por padrão */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem; /* Espaço à direita */
+    color: var(--color-secondary);
+}
+
+/* Área da Marca (Logo + Texto) */
+.top-bar-brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.top-bar-logo-box {
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-accent, #F97316); /* Laranja */
+    border-radius: 8px; /* Bordas arredondadas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem; /* Tamanho da letra */
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 0.75rem; /* Espaço entre caixa e texto */
+}
+.top-bar-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.brand-title {
+    font-weight: 600;
+    color: var(--color-dark);
+    font-size: 0.95rem;
+}
+.brand-subtitle {
+    font-size: 0.75rem;
+    color: var(--color-subtle);
+}
+
+/* Informações do Utilizador (Widget) */
+.user-profile-widget {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Espaço entre texto e avatar */
+  text-align: right;
+  flex-shrink: 0;
+  padding-left: 1.5rem; /* Espaço à esquerda para separar do conteúdo central (se houver) */
+}
+.user-info-text {
+  /* Não precisa de estilos específicos por padrão, */
+  /* herda o alinhamento do .user-profile-widget */
+  /* Apenas garante que não tenha margens indesejadas */
+  margin: 0;
+  padding: 0;
+  line-height: 1.3; /* Ajusta o espaçamento entre nome e email */
+}
+.user-profile-widget .user-name {
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 0.1rem;
+  font-size: 0.9rem;
+}
+.user-profile-widget .user-email {
+  font-size: 0.8rem;
+  color: var(--color-subtle);
+}
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-accent, #F97316); /* Laranja */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* --- Corpo Principal (Sidebar + Conteúdo) --- */
+.dashboard-body {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden; /* Mantém overflow hidden */
+  background-color: var(--color-background, #ffffff); /* ADICIONA fundo branco aqui */
+}
+
+
+/* --- Sidebar (Menu Lateral) --- */
+.dashboard-sidebar {
+  width: 250px;
+  background-color: var(--color-background, #ffffff); /* Mantém fundo branco */
+  padding: 1.5rem 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: calc(100vh - 70px); /* Mantém altura calculada */
+  position: sticky; /* Mantém sticky */
+  top: 70px;
+  z-index: 10;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* Botão para fechar sidebar mobile */
+.mobile-sidebar-close {
+    display: none; /* Escondido no desktop */
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-subtle);
+    padding: 0.25rem; /* Área de clique */
+}
+
+/* Navegação da Sidebar */
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  margin-top: 1rem;
+}
+
+.sidebar-nav li { /* Adiciona estilo ao <li> para conter a borda */
+    position: relative; /* Necessário para pseudo-elemento se usássemos */
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  /* Reduz o padding esquerdo para compensar a borda */
+  padding: 0.8rem 1.5rem 0.8rem calc(1.5rem - 3px); /* Subtrai a largura da borda */
+  color: var(--color-secondary, #374151);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  border-left: 3px solid transparent; /* Mantém o espaço, mas transparente */
+  white-space: nowrap;
+}
+.sidebar-nav a:hover {
+  background-color: var(--color-background-light, #f9fafb);
+}
+.sidebar-nav a.active {
+  background-color: var(--color-primary-light, #f5f3ff);
+  color: var(--color-primary, #6d28d9);
+  border-left-color: var(--color-primary, #6d28d9); /* A borda agora preenche o espaço transparente */
+  font-weight: 600;
+}
+.sidebar-nav svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.75rem;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+/* Botão de Logout na Sidebar */
+.sidebar-logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--color-border); /* Borda cinza claro (visível no branco) */
+  color: var(--color-text-muted); /* Texto cinza médio (visível no branco) */
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all var(--transition-speed) ease;
+}
+.sidebar-logout-button:hover {
+  background-color: #fef2f2; /* Fundo vermelho claro */
+  color: #ef4444; /* Vermelho */
+  border-color: #fecaca; /* Borda vermelha clara */
+}
+/* Estilo Hover Dark Mode (já existente, manter) */
+[data-theme='dark'] .sidebar-logout-button:hover {
+     background-color: rgba(239, 68, 68, 0.1);
+     border-color: rgba(239, 68, 68, 0.3);
+     color: #fca5a5; /* Vermelho mais claro no dark */
+}
+.sidebar-logout-button svg {
+    stroke-width: 2;
+    /* Garante que o ícone também pegue a cor do texto */
+    color: currentColor;
+}
+
+/* Overlay para fechar sidebar mobile */
+.sidebar-overlay {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  z-index: 55; /* Abaixo da sidebar, acima do conteúdo */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* --- Área de Conteúdo Principal --- */
+.dashboard-main {
+  flex-grow: 1; /* Ocupa o espaço restante */
+  padding: 2.5rem; /* Espaçamento interno */
+  overflow-y: auto; /* Scroll vertical se o conteúdo for maior */
+  height: calc(100vh - 70px);
+  background-color: var(--color-background-light, #f9fafb); /* Fundo cinza claro */
+}
+
+/* Header do Conteúdo Principal (Meu Painel) */
+.main-content-header {
+  margin-bottom: 2rem; /* Espaço abaixo dos títulos */
+}
+.main-content-header h1 {
+  font-size: 1.75rem; /* Tamanho do título */
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0 0 0.25rem 0; /* Margem inferior pequena */
+}
+.main-content-header p {
+  font-size: 0.9rem;
+  color: var(--color-subtle);
+  margin: 0;
+}
+
+/* Header de Seção (usado dentro das sub-páginas, ex: Dashboard, Meus Serviços) */
+.dashboard-section-header {
+  margin-bottom: 1.5rem;
+  /* Pode adicionar display: flex se precisar alinhar com botões */
+}
+.dashboard-section-header h2 {
+    font-size: 1.5rem; /* Ligeiramente menor que o h1 principal */
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0 0 0.25rem 0;
+}
+.dashboard-section-header p {
+    font-size: 0.9rem;
+    color: var(--color-subtle);
+    margin: 0;
+}
+
+/* --- Cards de Resumo (DashboardHome) --- */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.summary-card {
+  background-color: var(--color-background, #ffffff);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: box-shadow 0.3s ease;
+}
+.summary-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+}
+.card-content h3 {
+  font-size: 0.9rem; color: var(--color-subtle); margin: 0 0 0.5rem 0; font-weight: 500;
+}
+.card-content p {
+  font-size: 1.75rem; font-weight: 600; color: var(--color-dark); margin: 0;
+}
+.card-icon {
+  width: 40px; height: 40px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.card-icon svg { width: 1.25rem; height: 1.25rem; }
+/* Cores dos ícones dos cards */
+.summary-card:nth-child(1) .card-icon { background-color: var(--color-primary-light); }
+.summary-card:nth-child(1) svg { color: var(--color-primary); }
+.summary-card:nth-child(2) .card-icon { background-color: #ecfdf5; }
+.summary-card:nth-child(2) svg { color: #10b981; }
+.summary-card:nth-child(3) .card-icon { background-color: #fffbeb; }
+.summary-card:nth-child(3) svg { color: #f59e0b; }
+.summary-card:nth-child(4) .card-icon { background-color: #fef2f2; }
+.summary-card:nth-child(4) svg { color: #ef4444; }
+
+/* --- Caixa de Conteúdo Genérica --- */
+.content-box {
+   background: var(--color-background, #fff);
+   padding: 2rem;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+   margin-bottom: 2rem;
+}
+.content-box h3 {
+   margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 600;
+   color: var(--color-dark); padding-bottom: 0.75rem;
+   border-bottom: 1px solid var(--color-border);
+}
+
+/* --- Formulários dentro de .content-box --- */
+.content-box .input-group { margin-bottom: 1rem; }
+.content-box .input-group label {
+    display: block; font-size: 0.875rem; font-weight: 500;
+    color: var(--color-secondary); margin-bottom: 0.4rem;
+}
+.content-box .input-group input,
+.content-box .input-group select, /* Estilo para selects também */
+.content-box .input-group textarea { /* Estilo para textareas */
+    width: 100%; padding: 0.65rem 0.75rem; border: 1px solid var(--color-border);
+    border-radius: 6px; font-size: 0.9rem; transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: inherit; /* Garante a mesma fonte */
+}
+.content-box .input-group input:focus,
+.content-box .input-group select:focus,
+.content-box .input-group textarea:focus {
+    outline: none; border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2);
+}
+.content-box .input-group input:disabled {
+    background-color: var(--color-background-light); cursor: not-allowed;
+    color: var(--color-subtle);
+}
+.content-box form button[type="submit"] { font-size: 0.9rem; padding: 0.6rem 1.2rem; }
+
+/* Botão de Ticket na página Suporte */
+.ticket-button {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.9rem; padding: 0.6rem 1.2rem;
+}
+.ticket-button svg { stroke-width: 2.5; }
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+  .mobile-sidebar-toggle { display: block; } /* Mostra botão hambúrguer */
+  .dashboard-sidebar {
+    position: fixed;
+    left: -260px; /* Começa escondida */
+    top: 0;
+    height: 100vh;
+    padding-top: 1rem;
+    transition: left 0.3s ease-in-out;
+    z-index: 60; /* Acima do overlay */
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+  }
+  .dashboard-container.sidebar-open .dashboard-sidebar { left: 0; }
+  .mobile-sidebar-close { display: block; }
+
+  /* Overlay */
+  .sidebar-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); z-index: 55; opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+  }
+  .dashboard-container.sidebar-open .sidebar-overlay { display: block; opacity: 1; }
+
+  /* Ajustes Top Bar Mobile */
+  .top-bar-brand-text { display: none; }
+  .top-bar-brand { padding-right: 0; }
+  .dashboard-top-bar { padding: 0 1rem; height: 60px; }
+  .top-bar-logo-box { width: 35px; height: 35px; font-size: 1.2rem; }
+}
+
+@media (max-width: 768px) {
+  .user-profile-widget .user-info-text { display: none; }
+  .user-avatar { width: 32px; height: 32px; font-size: 0.9rem; }
+  .dashboard-main { padding: 1.5rem; }
+  .main-content-header h1 { font-size: 1.5rem; }
+  .summary-cards { grid-template-columns: 1fr; gap: 1rem; }
+  .content-box { padding: 1.5rem; }
+  .content-box .info-form { grid-template-columns: 1fr; gap: 0 1rem; }
+  .content-box .info-form div[style*="grid-column"],
+  .content-box .password-form div[style*="text-align"] {
+      grid-column: 1 / -1; text-align: center; margin-top: 0.5rem;
+  }
+}

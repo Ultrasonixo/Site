@@ -1,31 +1,136 @@
-// src/pages/HomePage.jsx (Versão SEM Tailwind)
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  CheckCircle,
+  ShieldCheck,
+  Zap,
+  BarChart3,
+  Users,
+  Mail,
+  Star,
+} from "lucide-react";
+import { animate, stagger, inView } from "@motionone/dom";
+import ParallaxText from "../components/ParallaxText";
 
-import React from 'react';
-import { Link } from 'react-router-dom'; 
-import { CheckCircle, ShieldCheck, Zap, BarChart3, Users, Mail } from 'lucide-react';
-import '../components/Design/HomePage.css'; // <-- IMPORTANTE: Importa o CSS
+import "../components/Design/HomePage.css";
+import "../components/Design/PlanosPage.css";
 
 const HomePage = () => {
-
   const features = [
-    { icon: ShieldCheck, title: "Gestão Policial Completa", description: "Gerencie B.O.s, perfis, histórico, promoções e mais." },
-    { icon: BarChart3, title: "Relatórios e Inteligência", description: "Visualize estatísticas, mapa de calor de crimes e análise de tendências." },
-    { icon: Users, title: "Administração RH Simplificada", description: "Controle alistamentos, tokens, anúncios e permissões facilmente." },
-    { icon: Zap, title: "Performance e Segurança", description: "Otimizado para velocidade e protegido com recursos modernos (JWT, reCAPTCHA, Cloudflare)." },
-    { icon: CheckCircle, title: "Hospedagem Inclusa", description: "Planos incluem hospedagem e domínio, sem complicações técnicas." },
-    { icon: Mail, title: "Suporte Dedicado", description: "Conte com nossa equipe para auxiliar na configuração e uso." },
+    {
+      icon: ShieldCheck,
+      title: "Gestão Policial Completa",
+      description:
+        "Gerencie B.O.s, perfis, histórico, promoções e mais de forma simples e segura.",
+    },
+    {
+      icon: BarChart3,
+      title: "Relatórios e Inteligência",
+      description:
+        "Visualize estatísticas, mapas de calor e tendências em tempo real.",
+    },
+    {
+      icon: Users,
+      title: "Administração RH Simplificada",
+      description:
+        "Controle alistamentos, permissões e anúncios em um só painel.",
+    },
+    {
+      icon: Zap,
+      title: "Performance e Segurança",
+      description:
+        "Sistema otimizado e protegido com autenticação JWT e verificação reCAPTCHA.",
+    },
+    {
+      icon: CheckCircle,
+      title: "Hospedagem Inclusa",
+      description: "Planos com domínio e hospedagem — tudo pronto para usar.",
+    },
+    {
+      icon: Mail,
+      title: "Suporte Dedicado",
+      description:
+        "Equipe sempre disponível para te ajudar a configurar e gerenciar o sistema.",
+    },
   ];
 
-  const planos = [
-    { name: "Plano Básico", subtitle: "Para pequenas comunidades", price: "29,90", features: ["Gestão de B.O.s", "Gestão de Perfis (até 50)", "Sistema de Anúncios", "Suporte Básico (Ticket)"], highlighted: false },
-    { name: "Plano Padrão", subtitle: "O mais popular", price: "49,90", features: ["Tudo do Básico", "Gestão de Perfis (Ilimitado)", "Relatórios e Estatísticas", "Administração RH Simplificada", "Suporte Prioritário (Discord)"], highlighted: true },
-    { name: "Plano Premium", subtitle: "Gestão completa", price: "79,90", features: ["Tudo do Padrão", "Gestão de Histórico e Promoções", "Controle de Alistamentos", "Hospedagem Inclusa Premium", "Suporte Dedicado 24/7"], highlighted: false },
+  const testimonials = [
+    {
+      rating: 5,
+      text: '"A proteção da Vertex revolucionou meu negócio. Agora posso vender scripts com total segurança, sem medo de cópias."',
+      author: "Caio Developer",
+      company: "Cliente desde 2025",
+    },
+    {
+      rating: 5,
+      text: '"O sistema de vendas automáticas é incrível. Aumentei meu faturamento em mais de 200% desde que comecei a usar."',
+      author: "Consolação Paulista",
+      company: "Cliente desde 2022",
+      logoUrl: "/pp11.png",
+    },
+    {
+      rating: 5,
+      text: '"O suporte da Vertex é incomparável. Sempre rápidos e atenciosos!"',
+      author: "Roman Store",
+      company: "Cliente desde 2023",
+    },
   ];
+
+  const trustedLogos = [
+    { display: "/pp11.png" },
+    { display: "/pp11.png"},
+    { display: "/pp11.png"},
+    { display: "/pp11.png" },
+    { display: "/pp11.png" },
+  ];
+
+  useEffect(() => {
+    const cleanups = [];
+
+    // --- Animações de entrada ---
+    const hero = document.querySelectorAll(".hero-content > *");
+    if (hero.length) {
+      animate(hero, { opacity: 0, y: -20 }, { duration: 0 });
+      animate(hero, { opacity: 1, y: 0 }, { duration: 0.7, delay: stagger(0.15) });
+    }
+
+    const animateInView = (selector) => {
+      document.querySelectorAll(selector).forEach((el) => {
+        if (!el.classList.contains("animated")) {
+          animate(el, { opacity: 0, y: 30 }, { duration: 0 });
+          const stop = inView(
+            el,
+            () => {
+              animate(el, { opacity: 1, y: 0 }, { duration: 0.6 });
+              el.classList.add("animated");
+            },
+            { amount: 0.2 }
+          );
+          cleanups.push(stop);
+        }
+      });
+    };
+
+    animateInView(".feature-card");
+    animateInView(".testimonial-card");
+
+    return () => cleanups.forEach((fn) => fn());
+  }, []);
+
+  const renderStars = (rating) =>
+    Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        size={16}
+        fill={i < rating ? "#ffbb00" : "var(--color-border)"}
+        color={i < rating ? "#ffbb00" : "var(--color-border)"}
+        style={{ strokeWidth: 1 }}
+      />
+    ));
 
   return (
     <div className="homepage-wrapper">
-
-      {/* --- Seção Hero --- */}
+      {/* HERO */}
       <section className="hero-section section-padding">
         <div className="container hero-content">
           <span className="hero-tag">A plataforma mais completa para Roleplay</span>
@@ -33,37 +138,36 @@ const HomePage = () => {
             Portal Policial SGP-RP: Gestão Completa para Sua Comunidade
           </h1>
           <p className="hero-subtitle">
-            Organize operações, analise dados e ofereça um portal profissional para seus cidadãos e policiais. Hospedagem e atualizações inclusas.
+            Organize operações, analise dados e ofereça um portal profissional
+            para seus cidadãos e policiais. Hospedagem e atualizações inclusas.
           </p>
           <div className="hero-actions">
-            <a href="#planos" className="btn btn-primary-dark">
+            <Link to="/planos" className="btn btn-primary-light">
               Ver Planos e Assinar
-            </a>
-            <a href="#" className="btn btn-secondary-outline">
-              Ver Demonstração
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* --- Seção de Features --- */}
+      {/* FEATURES */}
       <section className="features-section section-padding">
         <div className="container">
           <div className="section-header">
             <h2>Recursos Poderosos para Sua Gestão</h2>
             <p>
-              Tudo o que você precisa para administrar sua corporação e interagir com a comunidade de forma eficiente.
+              Tudo o que você precisa para administrar sua corporação e
+              interagir com a comunidade de forma eficiente.
             </p>
           </div>
           <div className="features-grid">
-            {features.map((feature, index) => (
-              <div key={index} className="feature-card">
+            {features.map((f, i) => (
+              <div key={i} className="feature-card">
                 <div className="feature-icon">
-                  <feature.icon strokeWidth={1.5} />
+                  <f.icon strokeWidth={1.5} />
                 </div>
                 <div className="feature-text">
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
+                  <h3>{f.title}</h3>
+                  <p>{f.description}</p>
                 </div>
               </div>
             ))}
@@ -71,49 +175,53 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* --- Seção de Planos --- */}
-      <section id="planos" className="plans-section section-padding">
+      {/* PARALLAX */}
+      <section className="parallax-text-section">
+        <ParallaxText baseVelocity={-2}>Vertex System • Sites e Bots</ParallaxText>
+        <ParallaxText baseVelocity={2}>Qualidade e Performance •</ParallaxText>
+      </section>
+
+      {/* TESTEMUNHOS */}
+      <section className="testimonials-section section-padding">
         <div className="container">
           <div className="section-header">
-            <h2>Planos Disponíveis</h2>
-            <p>
-              Escolha o plano ideal para as necessidades da sua comunidade RP.
-            </p>
+            <span className="section-tag">Avaliações</span>
+            <h2>Clientes Satisfeitos</h2>
+            <p>Veja o que nossos clientes dizem sobre nossos serviços.</p>
           </div>
-          <div className="plans-grid">
-            {planos.map((plano) => (
-              <div
-                key={plano.name}
-                className={`plan-card ${plano.highlighted ? 'highlighted' : ''}`}
-              >
-                <h3 className="plan-subtitle">{plano.subtitle}</h3>
-                <div className="plan-price">
-                  <span className="price-amount">R$ {plano.price}</span>
-                  <span className="price-period"> / por mês</span>
+          <div className="testimonial-grid">
+            {testimonials.map((t, i) => (
+              <div key={i} className="testimonial-card">
+                <div className="testimonial-rating">{renderStars(t.rating)}</div>
+                <p className="testimonial-text">{t.text}</p>
+                <div className="testimonial-author">
+                  <div>
+                    <span className="author-name">{t.author}</span>
+                    <span className="author-company">{t.company}</span>
+                  </div>
                 </div>
-                <ul className="plan-features">
-                  {plano.features.map((feature) => (
-                    <li key={feature}>
-                      <CheckCircle />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/assinar" 
-                  className={`btn ${
-                    plano.highlighted ? 'btn-primary-dark' : 'btn-secondary'
-                  }`}
-                >
-                  Contratar
-                </Link>
               </div>
             ))}
+          </div>
+
+          {/* LOGO LOOP INFINITO */}
+          <div className="trusted-by-section">
+            <h3>Empresas que Confiam em Nós</h3>
+            <div className="logo-scroller">
+              <div className="logo-track">
+                {/* sequência duplicada para loop contínuo */}
+                {trustedLogos.concat(trustedLogos).map((logo, i) => (
+                  <div key={i} className="logo-item">
+                    <img src={logo.display} alt={logo.name} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* --- Seção Final CTA (Call to Action) --- */}
+      {/* CTA FINAL */}
       <section className="cta-section section-padding">
         <div className="container cta-content">
           <h2 className="cta-title">
@@ -122,12 +230,11 @@ const HomePage = () => {
           <p className="cta-subtitle">
             Escolha o plano ideal e comece a usar o SGP-RP hoje mesmo.
           </p>
-          <a href="#planos" className="btn btn-primary-dark">
-            Começar Agora
-          </a>
+          <Link to="/planos" className="btn btn-primary-light">
+            Ver Planos Agora
+          </Link>
         </div>
       </section>
-
     </div>
   );
 };

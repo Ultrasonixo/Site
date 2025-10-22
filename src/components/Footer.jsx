@@ -1,82 +1,60 @@
-// src/components/Footer.jsx
-
-// src/components/Footer.jsx
+// src/components/Footer.jsx (Novo Layout Minimalista)
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Instagram, MessageCircle } from 'lucide-react';
-import '../components/Design/Footer.css'; // Importa nosso arquivo CSS
+// Importe ícones para redes sociais
+import { Instagram, Facebook, Youtube } from 'lucide-react'; // Ou use FontAwesome se preferir
+// Importa o CSS atualizado
+import './Design/Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-grid">
-          
-          {/* Coluna 1: Logo e Descrição */}
-          <div className="footer-column">
-            <h3 className="footer-logo">SGP-RP</h3>
-            <p>
-              Plataforma completa para gestão de comunidades de Roleplay Policial.
-            </p>
-          </div>
+    <footer className="footer-v2"> {/* Nova classe principal */}
 
-          {/* Coluna 2: Links de Navegação */}
-          <div className="footer-column">
-            <h4 className="footer-heading">Navegação</h4>
-            <ul className="footer-nav-list">
-              <li>
-                <Link to="/">Início</Link>
-              </li>
-              <li>
-                <Link to="/planos">Planos</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/registrar">Criar Conta</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Coluna 3: Contato e Redes Sociais */}
-          <div className="footer-column">
-            <h4 className="footer-heading">Contato</h4>
-            <div className="footer-socials">
-              {/* Substitua '#' pelos seus links reais */}
-              <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Discord"
-              >
-                <MessageCircle size={24} /> 
-              </a>
-              <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Instagram"
-              >
-                <Instagram size={24} />
-              </a>
-              <a 
-                href="mailto:contato@sgprp.com" 
-                aria-label="Email"
-              >
-                <Mail size={24} />
-              </a>
-            </div>
-          </div>
+      {/* Topo Centralizado */}
+      <div className="footer-top-content container">
+        {/* Logo (Pode ser texto ou <img>) */}
+        <div className="footer-v2-logo">
+           {/* <img src="/path/to/your/logo-white.svg" alt="SGP-RP Logo" /> */}
+           SGP-RP {/* Nome do seu site */}
         </div>
 
-        {/* Linha de Copyright (abaixo das colunas) */}
-        <hr className="footer-divider" />
-        <div className="footer-copyright">
-          <p>&copy; {new Date().getFullYear()} SGP-RP. Todos os direitos reservados.</p>
+        {/* Links de Navegação */}
+        <nav className="footer-v2-nav">
+          <Link to="/">Início</Link>
+          <Link to="/planos">Planos</Link>
+          {/* Adicione outros links relevantes (ex: Termos, Produtos) */}
+          <Link to="#">Termos</Link>
+          <Link to="/planos">Produtos</Link> {/* Aponta para Planos como página de produtos */}
+        </nav>
+
+        {/* Texto de Contato */}
+        <p className="footer-contact-text">
+          Não achou o que estava procurando? Entre em contato em nossas redes sociais para realizar encomendas e orçamentos.
+        </p>
+      </div>
+
+      {/* Barra de Destaque Roxa */}
+      <div className="footer-accent-bar">
+        {/* Pode colocar um email clicável ou outro texto */}
+        <a href="mailto:contato@sgprp.com">contato@sgprp.com</a> {/* Use seu email */}
+      </div>
+
+      {/* Base do Footer (Copyright e Sociais) */}
+      <div className="footer-bottom-content container">
+        <div className="footer-copyright-v2">
+          {/* Ajuste o nome e o texto */}
+          <p>© {new Date().getFullYear()} SGP-RP</p>
+          <p>Todos os direitos reservados.</p>
+        </div>
+        <div className="footer-socials-v2">
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={20} /></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><Youtube size={20} /></a>
+          {/* Adicione outros ícones */}
         </div>
       </div>
+
     </footer>
   );
 };

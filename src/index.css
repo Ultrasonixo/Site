@@ -1,23 +1,60 @@
-/* src/index.css (Versão Final e Corrigida) */
+/* src/index.css (Completo e Finalizado) */
 
 /* --- Variáveis de Cores e Fontes --- */
 :root {
+  /* Light Theme (Padrão) */
   --color-primary: #6d28d9;      /* Roxo Principal */
   --color-primary-dark: #5b21b6;  /* Roxo Escuro (para hover) */
   --color-primary-light: #f5f3ff;/* Roxo bem claro (para fundos) */
+  --color-accent: #F97316;       /* Laranja (para logo e avatar) */
+  --color-accent-dark: #ea580c;  /* Laranja Escuro (para hover) */
 
-  --color-dark: #111827;
-  --color-secondary: #374151;
-  --color-subtle: #6B7281;
-  --color-background: #ffffff;
-  --color-background-light: #f9fafb;
-  --color-border: #e5e7eb;
+  --color-dark: #111827;      /* Texto principal escuro */
+  --color-secondary: #374151; /* Texto secundário */
+  --color-subtle: #6B7281;    /* Texto subtil */
+  --color-background: #ffffff; /* Fundo principal branco */
+  --color-background-light: #f9fafb; /* Fundo secundário cinza claro */
+  --color-border: #e5e7eb;    /* Bordas claras */
+  --color-border-hover: #d1d5db; /* Borda Hover */
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
   --font-family-base: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  
+  --transition-speed: 0.2s; /* Duração padrão da transição */
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição global */
+}
+
+/* --- Dark Theme --- */
+[data-theme='dark'] {
+  --color-dark: #f9fafb;      /* Texto principal claro (era gray-50) */
+  --color-secondary: #d1d5db; /* Texto secundário claro (era gray-300) */
+  --color-subtle: #9ca3af;    /* Texto subtil claro (era gray-400) */
+  --color-background: #111827; /* Fundo principal escuro (era gray-900) */
+  --color-background-light: #1f2937; /* Fundo secundário escuro (era gray-800) */
+  --color-border: #374151;    /* Bordas escuras (era gray-700) */
+  --color-border-hover: #4b5563;  /* Borda Hover (era gray-600) */
+
+  /* Mantém as cores primárias e de accent iguais, ajuste se necessário */
+  /* --color-primary: #8b5cf6; */ /* Exemplo: Roxo mais claro */
+  /* --color-accent: #fb923c; */ /* Exemplo: Laranja mais claro */
+
+  /* Sombras ajustadas para dark mode */
+  --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 0.03);
+  --shadow-md: 0 4px 6px -1px rgb(255 255 255 / 0.05), 0 2px 4px -2px rgb(255 255 255 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(255 255 255 / 0.05), 0 4px 6px -4px rgb(255 255 255 / 0.05);
+
+  --color-primary-hover-bg: rgba(109, 40, 217, 0.15);
+  --color-accent-hover-bg: rgba(249, 115, 22, 0.15);
+
+  color-scheme: dark;
 }
 
 /* --- Reset e Estilos Base --- */
@@ -26,26 +63,29 @@
   margin: 0;
   padding: 0;
 }
+
 body {
+  margin: 0;
   font-family: var(--font-family-base);
-  background-color: var(--color-background);
-  color: var(--color-dark);
+  background-color: var(--color-background); /* Usa variável */
+  color: var(--color-text-base); /* Usa variável */
   line-height: 1.5;
   min-width: 320px;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
 /* --- Estrutura do App --- */
-.app-layout {
+.app-layout { /* Usado para o layout público */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 main {
-  flex-grow: 1;
+  flex-grow: 1; /* Garante que o conteúdo principal ocupe o espaço */
 }
 
 /* --- Classes Utilitárias de Layout --- */
@@ -58,7 +98,35 @@ main {
   padding-right: 1.5rem;
 }
 
-/* --- BOTÕES GLOBAIS (AGORA USAM AS VARIÁVEIS ROXAS) --- */
+/* Espaçamento padrão das seções */
+.section-padding {
+  padding: 4rem 0;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 0;
+  }
+}
+
+/* Título padrão das seções */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-header h1, .section-header h2 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 0.75rem;
+}
+.section-header p {
+  font-size: 1.125rem;
+  color: var(--color-subtle);
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+/* --- BOTÕES GLOBAIS --- */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.75rem;
@@ -68,12 +136,14 @@ main {
   border: 2px solid transparent;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed) ease; /* Transição geral */
+  text-decoration: none;
 }
 
+/* Botão Roxo Principal */
 .btn-primary-dark {
   background-color: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-text-inverted);
   border-color: var(--color-primary);
 }
 .btn-primary-dark:hover {
@@ -81,22 +151,63 @@ main {
   border-color: var(--color-primary-dark);
 }
 
-.btn-secondary {
-  background-color: var(--color-background);
-  color: var(--color-secondary);
-  border-color: var(--color-border);
+/* Botão Laranja (Accent) */
+.btn-accent {
+    background-color: var(--color-accent);
+    color: var(--color-text-inverted);
+    border-color: var(--color-accent);
 }
-.btn-secondary:hover {
-  background-color: var(--color-background-light);
+.btn-accent:hover {
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
 }
 
+/* Botão Branco (Claro) */
+.btn-primary-light {
+  background-color: var(--color-bg-base); /* Usa variável de fundo */
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm); /* Usa variável de sombra */
+  border-color: var(--color-border); /* Usa variável de borda */
+}
+.btn-primary-light:hover {
+  background-color: var(--color-bg-subtle); /* Usa variável */
+}
+
+/* Botão Branco Secundário (com Borda) */
+.btn-secondary {
+  background-color: var(--color-bg-base); /* Usa variável */
+  color: var(--color-text-base); /* Usa variável */
+  border-color: var(--color-border); /* Usa variável */
+  box-shadow: var(--shadow-sm); /* Usa variável */
+}
+.btn-secondary:hover {
+  background-color: var(--color-bg-subtle); /* Usa variável */
+  border-color: var(--color-border-hover); /* Usa variável */
+}
+
+/* Botão Roxo Contornado */
 .btn-secondary-outline {
   background-color: transparent;
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
 .btn-secondary-outline:hover {
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-dark);
+  background-color: var(--color-primary-hover-bg); /* Usa variável */
   border-color: var(--color-primary-dark);
+  color: var(--color-primary-dark);
+}
+
+/* --- Estilo Adicional (Referente ao Header do Dashboard) --- */
+/* Estilos para o container do texto (nome e email) no widget do utilizador */
+.user-info-text {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+  color: var(--color-text-base); /* Garante cor correta com tema */
+}
+.user-profile-widget .user-name {
+  color: var(--color-text-base); /* Garante cor correta com tema */
+}
+.user-profile-widget .user-email {
+  color: var(--color-text-muted); /* Garante cor correta com tema */
 }

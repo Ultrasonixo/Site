@@ -1,48 +1,81 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// src/App.jsx (Corrected Import Path)
 
-// Importe seu CSS global
+import React, { useState, useEffect } from 'react'; // Added theme hooks back
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 
-// Importe suas páginas e componentes de layout
+// Layouts
 import Header from './components/Header';
 import Footer from './components/Footer';
+// CORRECTION: Use the path you specified
+import DashboardLayout from './components/layouts/DashboardLayout';
+
+// Páginas Públicas
 import HomePage from './pages/HomePage';
 import PlanosPage from './pages/PlanosPage';
 import LoginPage from './pages/LoginPage';
+import RegistroPage from './pages/RegistroPage';
 
-// Páginas temporárias para os links de login/registro
-const LoginPage = () => (
-  <div className="container" style={{ padding: '5rem 1rem', minHeight: '50vh', textAlign: 'center' }}>
-    <h1>Página de Login</h1>
-    <p>Em construção.</p>
-  </div>
-);
-const RegistroPage = () => (
-  <div className="container" style={{ padding: '5rem 1rem', minHeight: '50vh', textAlign: 'center' }}>
-    <h1>Página de Registro</h1>
-    <p>Em construção.</p>
+
+// Páginas do Dashboard
+import DashboardHome from './pages/DashboardPage'; // Renamed
+import Servicos from './pages/Servicos';
+import Faturas from './pages/Faturas';
+import Suporte from './pages/Suporte';
+import MinhaConta from './pages/MinhaConta';
+
+// Componente para Layout Público
+const PublicLayout = ({ children, toggleTheme, currentTheme }) => ( // Added theme props back
+  <div className="app-layout">
+    {/* Pass theme props to Header */}
+    <Header toggleTheme={toggleTheme} currentTheme={currentTheme} />
+    <main>{children}</main>
+    <Footer />
   </div>
 );
 
 function App() {
+  // --- LÓGICA DO TEMA --- (Added back from previous correct version)
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+  // --- FIM DA LÓGICA DO TEMA ---
+
   return (
-    // O BrowserRouter agora vive aqui, envolvendo toda a lógica do App.
     <BrowserRouter>
-      {/* Esta div é o container principal do layout do site */}
-      <div className="app-layout">
-        <Header />
-        <main>
-          <Routes>
-            {/* Definição de todas as suas rotas */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/planos" element={<PlanosPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/registrar" element={<RegistroPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Routes>
+        {/* Rotas Públicas - Pass theme props */}
+        <Route path="/" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><HomePage /></PublicLayout>} />
+        <Route path="/planos" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><PlanosPage /></PublicLayout>} />
+        <Route path="/login" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><LoginPage /></PublicLayout>} />
+        <Route path="/registrar" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><RegistroPage /></PublicLayout>} />
+        
+
+        {/* Rotas Dashboard */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="servicos" element={<Servicos />} />
+          <Route path="faturas" element={<Faturas />} />
+          <Route path="suporte" element={<Suporte />} />
+          <Route path="minha-conta" element={<MinhaConta />} />
+          {/* Example for individual ticket view */}
+          {/* <Route path="suporte/:ticketId" element={<TicketDetalhe />} /> */}
+        </Route>
+
+        {/* Catch-all Route */}
+        <Route path="*" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><div className='container section-padding' style={{textAlign: 'center'}}><h2>Página Não Encontrada</h2></div></PublicLayout>} />
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -1,5 +1,7 @@
+/* src/components/Design/PlanosPage.css */
+
 .plans-page-wrapper {
-  background-color: #ffffff;
+  background-color: var(--color-background, #ffffff);
 }
 
 .plans-grid {
@@ -8,45 +10,36 @@
   gap: 2rem;
   max-width: 64rem;
   margin: 0 auto;
-  align-items: center; /* Alinha os cards verticalmente */
+  align-items: stretch;
 }
 
 .plan-card {
-  background-color: #ffffff;
+  background-color: var(--color-background, #ffffff);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 2px solid #e5e7eb;
-  
-  /* ANIMAÇÃO: Adiciona uma transição suave para todas as propriedades */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 2px solid var(--color-border, #e5e7eb);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* ANIMAÇÃO: Efeito de "levantar" o card ao passar o mouse */
 .plan-card:hover {
-  transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo do card destacado */
 .plan-card.highlighted {
-  border-color: #6d28d9; /* Roxo */
-  
-  /* ANIMAÇÃO: Faz o card destacado ser um pouco maior */
-  transform: scale(1.05);
+  border-color: var(--color-primary, #6d28d9);
 }
 
-/* ANIMAÇÃO: Efeito de hover ainda mais pronunciado para o card destacado */
 .plan-card.highlighted:hover {
-    transform: scale(1.08) translateY(-5px);
-    box-shadow: 0 12px 25px rgba(93, 29, 224, 0.15);
+    box-shadow: 0 12px 25px rgba(109, 40, 217, 0.15);
 }
-
 
 .plan-subtitle {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #6d28d9; /* Roxo */
+  color: var(--color-primary, #6d28d9);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
@@ -58,29 +51,30 @@
 .price-amount {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-dark, #111827);
 }
 .price-period {
   font-size: 1.125rem;
   font-weight: 400;
-  color: #718096;
+  color: var(--color-subtle, #718096);
 }
 
 .plan-features {
   list-style: none;
   padding: 0;
   margin: 0 0 2rem 0;
+  flex-grow: 1;
 }
 .plan-features li {
   display: flex;
   align-items: center;
-  color: #4b5563;
+  color: var(--color-secondary, #4b5563);
   margin-bottom: 0.75rem;
 }
 .plan-features li svg {
   width: 1.25rem;
   height: 1.25rem;
-  color: #6d28d9; /* Roxo */
+  color: var(--color-primary, #6d28d9);
   margin-right: 0.75rem;
   flex-shrink: 0;
 }
@@ -90,53 +84,90 @@
   width: 100%;
   text-align: center;
   margin: 0;
+  margin-top: auto;
 }
 
-/* --- INÍCIO DA CORREÇÃO: Estilos dos botões que faltavam --- */
+.product-type-selector {
+  display: flex;
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto 3rem auto;
+  background-color: var(--color-background-light, #f9fafb);
+  border-radius: 99px;
+  padding: 5px;
+  border: 1px solid var(--color-border, #e5e7eb);
+}
 
-/* Estilo base para os botões nesta página */
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  border: 2px solid transparent;
-  border-radius: 8px;
+.selector-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: none;
+  border: none;
+  border-radius: 99px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none; /* Garante que o link não tenha sublinhado */
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-subtle, #6B7281);
+  z-index: 10;
+  transition: color 0.3s ease;
 }
 
-/* Botão roxo principal (para o plano destacado) */
-.btn-primary-dark {
-  background-color: #6d28d9;
+.selector-option svg {
+  transition: color 0.3s ease;
+}
+
+.selector-option.active {
   color: #ffffff;
-  border-color: #6d28d9;
 }
-.btn-primary-dark:hover {
-  background-color: #5b21b6;
-  border-color: #5b21b6;
+.selector-option.active svg {
+    color: #ffffff;
 }
 
-/* Botão branco secundário (para os outros planos) */
-.btn-secondary {
-  background-color: #ffffff;
-  color: #374151;
-  border-color: #e5e7eb;
+.selector-switch {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  background-color: var(--color-primary, #6d28d9);
+  border-radius: 99px;
+  z-index: 5;
+  transition: transform 0.3s ease-in-out;
 }
-.btn-secondary:hover {
-  background-color: #f9fafb;
-  border-color: #d1d5db;
+
+.selector-switch.switch-right {
+  transform: translateX(calc(100% + 0px));
 }
 
-/* --- FIM DA CORREÇÃO --- */
+.plan-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 0.25rem;
+    word-break: break-word;
+    min-height: 2.5em;
+}
 
+.plan-subtitle {
+    margin-bottom: 1rem;
+}
 
-/* --- Media Queries (Responsividade) --- */
+@media (max-width: 400px) {
+  .product-type-selector {
+    max-width: 90%;
+  }
+  .selector-option {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+  }
+}
+
 @media (min-width: 768px) {
   .plans-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
