@@ -1,17 +1,30 @@
-/* src/components/Design/Footer.css (Novo Design Minimalista - v2) */
+/* src/components/Design/Footer.css (CORRIGIDO: Texto do logo/links segue o tema) */
 
 .footer-v2 {
-  background-color: #111827; /* Fundo bem escuro (gray-900) */
-  color: var(--color-subtle, #9CA3AF); /* Texto cinza claro */
-  margin-top: auto; /* Empurra para baixo */
-  padding-top: 3.5rem; /* Espaço acima do logo */
-  font-size: 0.875rem; /* Tamanho base menor */
+  background-color: var(--color-background);
+  color: var(--color-subtle);
+  margin-top: auto;
+  font-size: 0.875rem;
   line-height: 1.5;
+  transition: background-color 0.3s ease;
+  padding-top: 3.5rem;
 }
-/* Garante fundo escuro consistente no tema dark */
-[data-theme='dark'] .footer-v2 {
-    background-color: #0c0f14; /* Um tom ligeiramente diferente ou o mesmo */
-    color: var(--color-text-muted); /* Usa variável dark */
+
+/* --- LINHAS DIVISÓRIAS --- */
+.footer-divider {
+  border: none;
+  border-top: 1px solid #374151; /* Cor escura base */
+  margin: 0;
+  width: 100%;
+}
+[data-theme='light'] .footer-divider {
+  border-top-color: var(--color-border); /* Cor clara no tema light */
+}
+.footer-divider.top-divider {
+  margin-bottom: 2.5rem;
+}
+.footer-divider.bottom-divider {
+   margin-top: 2.5rem;
 }
 
 /* --- Topo Centralizado --- */
@@ -23,107 +36,114 @@
   margin-bottom: 2.5rem;
 }
 
+/* --- LOGO SEGUE O TEMA --- */
 .footer-v2-logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: var(--color-background, #ffffff); /* Logo branco */
+  /* CORRIGIDO: Usa a variável de cor principal do tema */
+  color: var(--color-dark); 
   margin-bottom: 1.5rem;
-  letter-spacing: 0.05em; /* Pequeno espaçamento */
+  letter-spacing: 0.05em;
+  transition: color var(--transition-speed) ease; /* Adiciona transição */
 }
-/* Estilo para imagem de logo, se usar */
 .footer-v2-logo img {
-  max-height: 40px; /* Ajuste altura */
+  max-height: 40px;
   width: auto;
 }
 
-/* Navegação Centralizada */
+/* --- LINKS SEGUEM O TEMA --- */
 .footer-v2-nav {
   display: flex;
-  flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem 1.5rem; /* Espaçamento vertical e horizontal */
+  gap: 0.75rem 1.5rem;
   margin-bottom: 1.5rem;
 }
 .footer-v2-nav a {
-  color: var(--color-text-muted); /* Usa variável */
+  /* CORRIGIDO: Usa a variável de cor principal do tema */
+  color: var(--color-dark); 
+  opacity: 0.8; /* Mantém opacidade para não ativo */
   text-decoration: none;
   font-weight: 500;
-  transition: color var(--transition-speed) ease;
+  transition: color var(--transition-speed) ease, opacity var(--transition-speed) ease; /* Adiciona transição */
 }
 .footer-v2-nav a:hover {
-  color: var(--color-background); /* Branco no hover */
+  opacity: 1;
+  /* CORRIGIDO: Muda para a cor primária no hover */
+  color: var(--color-primary); 
   text-decoration: underline;
 }
 
-/* Texto de Contato */
+/* Texto de Contato (usa cor adaptável) */
 .footer-contact-text {
-  max-width: 450px; /* Limita largura do texto */
+  max-width: 450px;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--color-text-muted); /* Usa variável */
+  color: var(--color-subtle);
 }
 
 /* --- Barra de Destaque Roxa --- */
 .footer-accent-bar {
-  background-color: var(--color-primary); /* Roxo */
-  padding: 0.8rem 1rem; /* Padding vertical e horizontal */
+  background-color: var(--color-primary);
+  padding: 0.8rem 1rem;
   text-align: center;
-  margin: 2rem 0; /* Espaço acima e abaixo */
+  margin: 0;
 }
 .footer-accent-bar a {
-  color: var(--color-text-inverted); /* Texto claro (branco) */
+  color: var(--color-text-inverted);
   font-weight: 500;
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
 .footer-accent-bar a:hover {
-  opacity: 0.85; /* Leve transparência no hover */
+  opacity: 0.85;
 }
 
 /* --- Base do Footer (Copyright e Sociais) --- */
 .footer-bottom-content {
   display: flex;
-  flex-direction: column; /* Coluna no mobile */
-  align-items: center; /* Centraliza no mobile */
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding-bottom: 2rem; /* Espaço abaixo */
-  gap: 1rem; /* Espaço entre copyright e sociais no mobile */
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  gap: 1rem;
 }
 
-/* Copyright */
+/* Copyright (usa cor adaptável) */
 .footer-copyright-v2 {
-  text-align: center; /* Centraliza texto no mobile */
-  font-size: 0.75rem; /* Texto pequeno */
+  text-align: center;
+  font-size: 0.75rem;
   line-height: 1.4;
-  color: var(--color-subtle); /* Cinza mais escuro / mais claro */
+  color: var(--color-subtle);
 }
 .footer-copyright-v2 p {
   margin: 0;
-  font-size: inherit; /* Garante tamanho correto */
+  font-size: inherit;
 }
 
-/* Ícones Sociais */
+/* Ícones Sociais (usa cor adaptável) */
 .footer-socials-v2 {
   display: flex;
-  gap: 1rem; /* Espaço entre ícones */
+  gap: 1rem;
 }
 .footer-socials-v2 a {
-  color: var(--color-subtle); /* Cinza mais escuro / mais claro */
+  color: var(--color-subtle);
   text-decoration: none;
   transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
   display: inline-block;
 }
 .footer-socials-v2 a:hover {
-  color: var(--color-text-base); /* Cor principal no hover */
-  transform: scale(1.15); /* Efeito de zoom */
+  color: var(--color-dark);
+  transform: scale(1.15);
 }
 
 /* --- Responsividade --- */
 @media (min-width: 768px) {
   .footer-bottom-content {
-    flex-direction: row; /* Linha no desktop */
-    text-align: left; /* Alinha copyright à esquerda */
-    gap: 2rem; /* Aumenta espaço */
+    flex-direction: row;
+    text-align: left;
+    gap: 2rem;
   }
   .footer-copyright-v2 {
     text-align: left;

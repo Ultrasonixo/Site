@@ -1,0 +1,232 @@
+/* src/components/Design/ProdutoDetalhePage.css */
+
+/* 1. O FUNDO DA PÁGINA (CINZA CLARO) */
+.produto-detalhe-wrapper {
+  background-color: var(--color-background-light);
+  min-height: 80vh;
+}
+[data-theme='dark'] .produto-detalhe-wrapper {
+    background-color: #0c0f14; /* Fundo escuro (quase preto) */
+}
+
+.back-to-plans-link {
+  display: inline-block;
+  margin-bottom: 1rem; /* Margem menor */
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-subtle);
+  transition: color 0.3s ease;
+}
+.back-to-plans-link:hover {
+  color: var(--color-primary);
+}
+
+/* 2. O CARD BRANCO PRINCIPAL (NOVO) */
+.detalhe-card {
+  background-color: var(--color-background);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem;
+  overflow: hidden; /* Para conter os cantos arredondados */
+}
+
+/* 3. O CABEÇALHO DENTRO DO CARD (TÍTULO E SUBTÍTULO) */
+.detalhe-header {
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.detalhe-nome-produto {
+  font-size: 2.25rem; /* Título maior */
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.2;
+  margin: 0;
+}
+.detalhe-subtitle {
+  font-size: 1.1rem; /* Subtítulo maior */
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+
+/* 4. O GRID (AGORA DENTRO DO CARD) */
+.detalhe-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Coluna da Esquerda (Mídia) */
+.detalhe-coluna-media {
+  width: 100%;
+}
+
+.media-viewer {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background-color: var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1rem;
+}
+.media-viewer img,
+.media-viewer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+/* Lista de Thumbnails */
+.media-thumbnail-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.thumbnail-item {
+  position: relative;
+  width: 80px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid var(--color-border); /* Borda sutil padrão */
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+.thumbnail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.thumbnail-item:hover {
+  transform: scale(1.05);
+  border-color: var(--color-primary);
+  opacity: 1;
+}
+.thumbnail-item.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+  opacity: 1;
+  transform: scale(1.05);
+}
+.thumbnail-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.thumbnail-item:hover .thumbnail-icon { opacity: 1; }
+.thumbnail-item.active .thumbnail-icon { opacity: 0; }
+
+
+/* Coluna da Direita (Informações) */
+.detalhe-coluna-info {
+  width: 100%;
+}
+
+/* O info-box agora NÃO é mais um card, é só um container */
+.detalhe-info-box {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  position: sticky; 
+  top: 100px; 
+}
+
+/* 5. ESTILOS PARA A NOVA ORDEM */
+.detalhe-descricao {
+  margin-bottom: 2rem; /* Espaço até o preço */
+}
+.detalhe-descricao p {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+.detalhe-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.detalhe-features-list li {
+  display: flex;
+  align-items: center;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+}
+.detalhe-features-list svg {
+  color: var(--color-primary);
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.detalhe-price {
+  margin-bottom: 1.5rem; /* Espaço até o botão */
+}
+.detalhe-price .price-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+.detalhe-price .price-period {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--color-subtle);
+}
+
+.btn-assinar {
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .detalhe-card {
+     padding: 2.5rem; /* Mais padding no desktop */
+  }
+}
+
+@media (min-width: 992px) {
+  .detalhe-grid {
+    /* Divide em 60% / 40% */
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+    align-items: flex-start; /* Alinha o topo das colunas */
+  }
+
+  .detalhe-nome-produto {
+     font-size: 2.75rem;
+  }
+}

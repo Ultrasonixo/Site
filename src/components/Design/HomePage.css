@@ -4,7 +4,7 @@
 .hero-section {
   background-color: var(--color-primary);
   background-image: linear-gradient(to bottom right, var(--color-primary), var(--color-primary-dark));
-  color: #ffffff;
+  color: #cacaca;
   overflow: hidden;
 }
 

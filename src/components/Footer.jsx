@@ -1,4 +1,4 @@
-// src/components/Footer.jsx (Versão Font Awesome)
+// src/components/Footer.jsx (CORRIGIDO: Linha superior fora do container)
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -8,11 +8,15 @@ const Footer = () => {
   return (
     <footer className="footer-v2">
 
-      {/* Topo Centralizado */}
+      {/* --- LINHA DIVISÓRIA SUPERIOR (MOVIDA PARA FORA DO CONTAINER) --- */}
+      <hr className="footer-divider top-divider" />
+      {/* --- FIM DA LINHA --- */}
+
+
+      {/* Topo Centralizado (Agora DENTRO do container) */}
       <div className="footer-top-content container">
         {/* Logo */}
         <div className="footer-v2-logo">
-          {/* <img src="/logo-white.svg" alt="SGP-RP Logo" /> */}
           SGP-RP
         </div>
 
@@ -30,30 +34,33 @@ const Footer = () => {
         </p>
       </div>
 
-      {/* Barra Roxa */}
+      {/* Barra Roxa (Já ocupa a largura toda) */}
       <div className="footer-accent-bar">
         <a href="mailto:contato@vertexsystem.com">contato@vertexsystem.com</a>
       </div>
 
-      {/* Base do Footer */}
+      {/* Linha Divisória Inferior (TAMBÉM PRECISA SAIR DO CONTAINER) */}
+      <hr className="footer-divider bottom-divider" />
+
+
+      {/* Base do Footer (DENTRO do container) */}
       <div className="footer-bottom-content container">
         <div className="footer-copyright-v2">
           <p>© {new Date().getFullYear()} SGP-RP</p>
           <p>Todos os direitos reservados.</p>
         </div>
 
-        {/* Ícones Sociais com Font Awesome */}
+        {/* Ícones Sociais */}
         <div className="footer-socials-v2">
           <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <i className="fab fa-instagram"></i>
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <i class="fa-brands fa-discord"></i>
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+            <i className="fa-brands fa-discord"></i>
           </a>
           <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Youtube">
             <i className="fab fa-youtube"></i>
           </a>
-          {/* Adicione outros ícones, ex: Twitter, TikTok, etc */}
         </div>
       </div>
 

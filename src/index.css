@@ -1,44 +1,59 @@
-/* src/index.css (Completo e Finalizado) */
-
-/* --- Variáveis de Cores e Fontes --- */
 :root {
-  /* Light Theme (Padrão) */
+  /* Light Theme (Padrão - SUAVIZADO) */
   --color-primary: #6d28d9;      /* Roxo Principal */
   --color-primary-dark: #5b21b6;  /* Roxo Escuro (para hover) */
   --color-primary-light: #f5f3ff;/* Roxo bem claro (para fundos) */
   --color-accent: #F97316;       /* Laranja (para logo e avatar) */
   --color-accent-dark: #ea580c;  /* Laranja Escuro (para hover) */
 
-  --color-dark: #010202;      /* Texto principal escuro */
-  --color-secondary: #374151; /* Texto secundário */
-  --color-subtle: #6B7281;    /* Texto subtil */
-  --color-background: #ffffff; /* Fundo principal branco */
-  --color-background-light: #f9fafb; /* Fundo secundário cinza claro */
-  --color-border: #e5e7eb;    /* Bordas claras */
-  --color-border-hover: #d1d5db; /* Borda Hover */
+  --color-dark: #1f2937;      /* Texto principal escuro (um pouco mais suave que preto puro) */
+  --color-secondary: #4b5563; /* Texto secundário (cinza médio-escuro) */
+  --color-subtle: #6B7281;    /* Texto subtil (cinza médio) */
+  
+  /* --- FUNDOS SUAVIZADOS --- */
+  --color-background: #f1f5f9; /* Fundo principal: Branco levemente azulado/acinzentado (era #ffffff) */
+  --color-background-light: #f1f5f9c5; /* Fundo secundário: Cinza um pouco mais perceptível (era #f9fafb) */
+  
+  /* --- BORDAS SUAVIZADAS --- */
+  --color-border: #e2e8f0;    /* Bordas um pouco mais suaves (era #e5e7eb) */
+  --color-border-hover: #cbd5e1; /* Borda Hover (era #d1d5db) */
+
+  /* Cores de Texto Invertido (para botões roxos/laranjas) */
+  --color-text-inverted: #ffffff; /* Branco */
+  /* Cores de Texto Base (usado em index.css e body) */
+  --color-text-base: var(--color-dark); /* Texto principal */
+  --color-text-muted: var(--color-subtle); /* Texto mais claro */
+  /* Cores de Fundo Base (usado em botões, inputs, etc.) */
+  --color-bg-base: #ffffff; /* Branco puro para elementos como cards e inputs */
+  --color-bg-subtle: #f9fafb; /* Cinza bem claro para hover de botões brancos */
+
+  /* Cores de Hover para botões contornados */
+  --color-primary-hover-bg: rgba(109, 40, 217, 0.08); /* Fundo roxo levemente mais visível */
+  --color-accent-hover-bg: rgba(249, 115, 22, 0.08); /* Fundo laranja levemente mais visível */
+
 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   --font-family-base: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --transition-speed: 0.2s; /* Duração padrão da transição */
+  --transition-speed: 0.2s;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color-scheme: light;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transição global */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- Dark Theme --- */
+/* --- Dark Theme --- (Não mude esta parte) */
 [data-theme='dark'] {
   --color-dark: #f9fafb;      /* Texto principal claro (era gray-50) */
   --color-secondary: #d1d5db; /* Texto secundário claro (era gray-300) */
   --color-subtle: #9ca3af;    /* Texto subtil claro (era gray-400) */
   --color-background: #0b0c0e; /* Fundo principal escuro (era gray-900) */
-  --color-background-light: #1f2937; /* Fundo secundário escuro (era gray-800) */
+  --color-background-light: #0b0c0e; /* Fundo secundário escuro (era gray-800) */
   --color-border: #374151;    /* Bordas escuras (era gray-700) */
   --color-border-hover: #4b5563;  /* Borda Hover (era gray-600) */
 
