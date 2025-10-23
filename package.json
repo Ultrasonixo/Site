@@ -12,6 +12,7 @@
     "init:tailwind": "tailwindcss init -p"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
     "@motionone/dom": "^10.18.0",
     "axios": "^1.12.2",
     "firebase": "^12.4.0",

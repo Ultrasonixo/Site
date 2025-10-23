@@ -9,7 +9,7 @@
   --color-accent: #F97316;       /* Laranja (para logo e avatar) */
   --color-accent-dark: #ea580c;  /* Laranja Escuro (para hover) */
 
-  --color-dark: #111827;      /* Texto principal escuro */
+  --color-dark: #010202;      /* Texto principal escuro */
   --color-secondary: #374151; /* Texto secundário */
   --color-subtle: #6B7281;    /* Texto subtil */
   --color-background: #ffffff; /* Fundo principal branco */
@@ -37,7 +37,7 @@
   --color-dark: #f9fafb;      /* Texto principal claro (era gray-50) */
   --color-secondary: #d1d5db; /* Texto secundário claro (era gray-300) */
   --color-subtle: #9ca3af;    /* Texto subtil claro (era gray-400) */
-  --color-background: #111827; /* Fundo principal escuro (era gray-900) */
+  --color-background: #0b0c0e; /* Fundo principal escuro (era gray-900) */
   --color-background-light: #1f2937; /* Fundo secundário escuro (era gray-800) */
   --color-border: #374151;    /* Bordas escuras (era gray-700) */
   --color-border-hover: #4b5563;  /* Borda Hover (era gray-600) */

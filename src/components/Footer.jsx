@@ -1,31 +1,27 @@
-// src/components/Footer.jsx (Novo Layout Minimalista)
+// src/components/Footer.jsx (Versão Font Awesome)
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// Importe ícones para redes sociais
-import { Instagram, Facebook, Youtube } from 'lucide-react'; // Ou use FontAwesome se preferir
-// Importa o CSS atualizado
 import './Design/Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer-v2"> {/* Nova classe principal */}
+    <footer className="footer-v2">
 
       {/* Topo Centralizado */}
       <div className="footer-top-content container">
-        {/* Logo (Pode ser texto ou <img>) */}
+        {/* Logo */}
         <div className="footer-v2-logo">
-           {/* <img src="/path/to/your/logo-white.svg" alt="SGP-RP Logo" /> */}
-           SGP-RP {/* Nome do seu site */}
+          {/* <img src="/logo-white.svg" alt="SGP-RP Logo" /> */}
+          SGP-RP
         </div>
 
-        {/* Links de Navegação */}
+        {/* Navegação */}
         <nav className="footer-v2-nav">
           <Link to="/">Início</Link>
           <Link to="/planos">Planos</Link>
-          {/* Adicione outros links relevantes (ex: Termos, Produtos) */}
           <Link to="#">Termos</Link>
-          <Link to="/planos">Produtos</Link> {/* Aponta para Planos como página de produtos */}
+          <Link to="/planos">Produtos</Link>
         </nav>
 
         {/* Texto de Contato */}
@@ -34,24 +30,30 @@ const Footer = () => {
         </p>
       </div>
 
-      {/* Barra de Destaque Roxa */}
+      {/* Barra Roxa */}
       <div className="footer-accent-bar">
-        {/* Pode colocar um email clicável ou outro texto */}
-        <a href="mailto:contato@sgprp.com">contato@sgprp.com</a> {/* Use seu email */}
+        <a href="mailto:contato@vertexsystem.com">contato@vertexsystem.com</a>
       </div>
 
-      {/* Base do Footer (Copyright e Sociais) */}
+      {/* Base do Footer */}
       <div className="footer-bottom-content container">
         <div className="footer-copyright-v2">
-          {/* Ajuste o nome e o texto */}
           <p>© {new Date().getFullYear()} SGP-RP</p>
           <p>Todos os direitos reservados.</p>
         </div>
+
+        {/* Ícones Sociais com Font Awesome */}
         <div className="footer-socials-v2">
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={20} /></a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><Youtube size={20} /></a>
-          {/* Adicione outros ícones */}
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i className="fab fa-instagram"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fa-brands fa-discord"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Youtube">
+            <i className="fab fa-youtube"></i>
+          </a>
+          {/* Adicione outros ícones, ex: Twitter, TikTok, etc */}
         </div>
       </div>
 
