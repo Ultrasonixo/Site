@@ -1,28 +1,28 @@
-// src/App.jsx (Com ProdutoDetalhePage incluída e extensões .jsx)
+// src/App.jsx (Caminhos Corrigidos)
 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './index.css'; // Extensão .css é geralmente necessária
+import './index.css'; // Caminho relativo (está na mesma pasta 'src')
 
 // Layouts
-import Header from './components/Header.jsx'; // Adicionada extensão
-import Footer from './components/Footer.jsx'; // Adicionada extensão
-import DashboardLayout from './components/layouts/DashboardLayout.jsx'; // Adicionada extensão
+import Header from './components/Header.jsx'; // Caminho relativo
+import Footer from './components/Footer.jsx'; // Caminho relativo
+import DashboardLayout from './components/layouts/DashboardLayout.jsx'; // Caminho relativo
 
 // Páginas Públicas
-import HomePage from './pages/HomePage.jsx'; // Adicionada extensão
-import PlanosPage from './pages/PlanosPage.jsx'; // Adicionada extensão
-import LoginPage from './pages/LoginPage.jsx'; // Adicionada extensão
-import RegistroPage from './pages/RegistroPage.jsx'; // Adicionada extensão
-import ProdutoDetalhePage from './pages/ProdutoDetalhePage.jsx'; // Adicionada extensão
+import HomePage from './pages/HomePage.jsx'; // Caminho relativo
+import PlanosPage from './pages/PlanosPage.jsx'; // Caminho relativo
+import LoginPage from './pages/LoginPage.jsx'; // Caminho relativo
+import RegistroPage from './pages/RegistroPage.jsx'; // Caminho relativo
+import ProdutoDetalhePage from './pages/ProdutoDetalhePage.jsx'; // Caminho relativo
 import CheckoutPage from './pages/CheckoutPage.jsx';
 
 // Páginas do Dashboard
-import DashboardHome from './pages/DashboardPage.jsx'; // Adicionada extensão
-import Servicos from './pages/Servicos.jsx'; // Adicionada extensão
-import Faturas from './pages/Faturas.jsx'; // Adicionada extensão
-import Suporte from './pages/Suporte.jsx'; // Adicionada extensão
-import MinhaConta from './pages/MinhaConta.jsx'; // Adicionada extensão
+import DashboardHome from './pages/DashboardPage.jsx'; // Caminho relativo
+import Servicos from './pages/Servicos.jsx'; // Caminho relativo
+import Faturas from './pages/Faturas.jsx'; // Caminho relativo
+import Suporte from './pages/Suporte.jsx'; // Caminho relativo
+import MinhaConta from './pages/MinhaConta.jsx'; // Caminho relativo
 
 // Componente para Layout Público
 const PublicLayout = ({ children, toggleTheme, currentTheme }) => (
@@ -86,3 +86,4 @@ function App() {
 }
 
 export default App;
+
