@@ -1,20 +1,54 @@
-// src/pages/PlanosPage.jsx (Corrigido para importar dados)
+// src/pages/PlanosPage.jsx (Lendo do Firestore)
 
-import React, { useState, useEffect } from 'react'; // Removido useRef (não usado aqui)
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, MonitorSmartphone, Bot } from 'lucide-react';
 import { animate, inView, stagger } from "@motionone/dom";
 import '../components/Design/PlanosPage.css';
-// Importa os dados do ficheiro centralizado
-import { todosOsProdutos } from '../data/produtos';
+
+// Importações do Firebase
+import { db } from '../firebase'; // Importa a instância 'db' do firebase.js
+import { collection, getDocs, query, where } from 'firebase/firestore';
+
+// --- (Dados dos produtos REMOVIDOS) ---
+// const todosOsProdutos = [...]; // Esta constante foi removida
 
 const PlanosPage = () => {
   const [selectedType, setSelectedType] = useState('site');
-  // Usa os dados importados para filtrar
-  const produtosFiltrados = todosOsProdutos.filter(produto => produto.type === selectedType);
+  const [produtos, setProdutos] = useState([]); // Estado para guardar produtos do Firestore
+  const [loading, setLoading] = useState(true); // Estado de carregamento
 
-  // Lógica da Animação (sem alterações)
+  // --- EFEITO PARA BUSCAR DADOS DO FIRESTORE ---
   useEffect(() => {
+    const fetchProdutos = async () => {
+      setLoading(true); // Inicia o carregamento
+      try {
+        // Cria a query: busca na coleção 'produtos' onde o 'type' é igual ao 'selectedType'
+        const q = query(collection(db, "produtos"), where("type", "==", selectedType));
+        
+        const querySnapshot = await getDocs(q);
+        const produtosList = querySnapshot.docs.map(doc => ({
+          id: doc.id, // Adiciona o ID do documento
+          ...doc.data() // Adiciona o resto dos dados
+        }));
+        
+        setProdutos(produtosList); // Define os produtos no estado
+      } catch (error) {
+        console.error("Erro ao buscar produtos: ", error);
+        // Tratar o erro (ex: mostrar mensagem na tela)
+      } finally {
+        setLoading(false); // Finaliza o carregamento
+      }
+    };
+
+    fetchProdutos();
+  }, [selectedType]); // Re-executa sempre que 'selectedType' (site/bot) mudar
+
+  // --- LÓGICA DA ANIMAÇÃO (AJUSTADA) ---
+  useEffect(() => {
+    // Só executa se não estiver carregando e houver produtos
+    if (loading || produtos.length === 0) return;
+
     const stopObservers = [];
     const cardsParaAnimar = document.querySelectorAll(".plan-card:not(.animated)");
 
@@ -38,7 +72,54 @@ const PlanosPage = () => {
     return () => {
       stopObservers.forEach((stop) => stop());
     };
-  }, [produtosFiltrados]); // Re-executa quando os produtos mudam
+
+  }, [produtos, loading]); // Re-executa quando os produtos (do Firestore) mudarem ou o loading terminar
+  // --- FIM DA LÓGICA DA ANIMAÇÃO ---
+
+  const renderContent = () => {
+    if (loading) {
+      return (
+        <div className="content-box no-tickets-message" style={{marginTop: '2rem'}}>
+          <p>A carregar produtos...</p>
+        </div>
+      );
+    }
+
+    if (produtos.length === 0) {
+      return (
+        <div className="content-box no-tickets-message" style={{marginTop: '2rem'}}>
+          <p>Nenhum produto do tipo "{selectedType}" encontrado no momento.</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="plans-grid">
+        {produtos.map((produto) => (
+          <div
+            key={produto.id}
+            className={`plan-card ${produto.highlighted ? 'highlighted' : ''}`}
+          >
+             <h2 className="plan-name">{produto.name}</h2>
+             <h3 className="plan-subtitle">{produto.subtitle}</h3>
+             <div className="plan-price">
+               <span className="price-amount">R$ {produto.price}</span>
+               <span className="price-period"> / por mês</span>
+             </div>
+             <ul className="plan-features">
+               {produto.features.map((feature) => (
+                 <li key={feature}><CheckCircle /><span>{feature}</span></li>
+               ))}
+             </ul>
+             {/* O Link para /produto/${produto.id} agora usa o ID do Firestore (ex: sgp-basico) */}
+             <Link to={`/produto/${produto.id}`} className={`btn ${produto.highlighted ? 'btn-primary-dark' : 'btn-secondary'}`}>
+               Ver Detalhes
+             </Link>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="plans-page-wrapper section-padding">
@@ -48,7 +129,6 @@ const PlanosPage = () => {
           <p>Escolha a solução ideal para a sua necessidade.</p>
         </div>
 
-        {/* Seletor Site/Bot */}
         <div className="product-type-selector">
            <button className={`selector-option ${selectedType === 'site' ? 'active' : ''}`} onClick={() => setSelectedType('site')}>
             <MonitorSmartphone size={20} /> Sites
@@ -59,37 +139,8 @@ const PlanosPage = () => {
           <div className={`selector-switch ${selectedType === 'bot' ? 'switch-right' : ''}`}></div>
         </div>
 
-        {/* Grid de Produtos */}
-        {produtosFiltrados.length > 0 ? (
-          <div className="plans-grid">
-            {produtosFiltrados.map((produto) => (
-              <div
-                key={produto.id}
-                className={`plan-card ${produto.highlighted ? 'highlighted' : ''}`}
-              >
-                 <h2 className="plan-name">{produto.name}</h2>
-                 <h3 className="plan-subtitle">{produto.subtitle}</h3>
-                 <div className="plan-price">
-                   <span className="price-amount">R$ {produto.price}</span>
-                   <span className="price-period"> / por mês</span>
-                 </div>
-                 <ul className="plan-features">
-                   {produto.features.map((feature) => (
-                     <li key={feature}><CheckCircle /><span>{feature}</span></li>
-                   ))}
-                 </ul>
-                 {/* Link para a nova página de detalhes */}
-                 <Link to={`/produto/${produto.id}`} className={`btn ${produto.highlighted ? 'btn-primary-dark' : 'btn-secondary'}`}>
-                   Ver Detalhes
-                 </Link>
-              </div>
-            ))}
-          </div>
-        ) : (
-           <div className="content-box no-tickets-message" style={{marginTop: '2rem', backgroundColor: 'var(--color-bg-base)', textAlign: 'center', color: 'var(--color-text-muted)', padding: '2rem'}}>
-              <p>Nenhum produto do tipo "{selectedType}" encontrado no momento.</p>
-           </div>
-        )}
+        {renderContent()}
+
       </div>
     </div>
   );

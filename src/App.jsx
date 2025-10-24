@@ -1,27 +1,28 @@
-// src/App.jsx
+// src/App.jsx (Com ProdutoDetalhePage incluída e extensões .jsx)
 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './index.css';
+import './index.css'; // Extensão .css é geralmente necessária
 
 // Layouts
-import Header from './components/Header';
-import Footer from './components/Footer';
-import DashboardLayout from './components/layouts/DashboardLayout';
+import Header from './components/Header.jsx'; // Adicionada extensão
+import Footer from './components/Footer.jsx'; // Adicionada extensão
+import DashboardLayout from './components/layouts/DashboardLayout.jsx'; // Adicionada extensão
 
 // Páginas Públicas
-import HomePage from './pages/HomePage';
-import PlanosPage from './pages/PlanosPage';
-import LoginPage from './pages/LoginPage';
-import RegistroPage from './pages/RegistroPage';
-import ProdutoDetalhePage from './pages/ProdutoDetalhePage'; // <-- 1. IMPORTE A NOVA PÁGINA
+import HomePage from './pages/HomePage.jsx'; // Adicionada extensão
+import PlanosPage from './pages/PlanosPage.jsx'; // Adicionada extensão
+import LoginPage from './pages/LoginPage.jsx'; // Adicionada extensão
+import RegistroPage from './pages/RegistroPage.jsx'; // Adicionada extensão
+import ProdutoDetalhePage from './pages/ProdutoDetalhePage.jsx'; // Adicionada extensão
+import CheckoutPage from './pages/CheckoutPage.jsx';
 
 // Páginas do Dashboard
-import DashboardHome from './pages/DashboardPage';
-import Servicos from './pages/Servicos';
-import Faturas from './pages/Faturas';
-import Suporte from './pages/Suporte';
-import MinhaConta from './pages/MinhaConta';
+import DashboardHome from './pages/DashboardPage.jsx'; // Adicionada extensão
+import Servicos from './pages/Servicos.jsx'; // Adicionada extensão
+import Faturas from './pages/Faturas.jsx'; // Adicionada extensão
+import Suporte from './pages/Suporte.jsx'; // Adicionada extensão
+import MinhaConta from './pages/MinhaConta.jsx'; // Adicionada extensão
 
 // Componente para Layout Público
 const PublicLayout = ({ children, toggleTheme, currentTheme }) => (
@@ -57,8 +58,9 @@ function App() {
         <Route path="/" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><HomePage /></PublicLayout>} />
         <Route path="/planos" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><PlanosPage /></PublicLayout>} />
         
-        {/* --- 2. ADICIONE A NOVA ROTA AQUI --- */}
-        <Route path="/produto/:id" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><ProdutoDetalhePage /></PublicLayout>} />
+        {/* A rota captura o 'produtoId' da URL, ex: /produto/sgp-basico */}
+        <Route path="/produto/:produtoId" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><ProdutoDetalhePage /></PublicLayout>} />
+        <Route path="/checkout/:produtoId" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><CheckoutPage /></PublicLayout>} />
         
         <Route path="/login" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><LoginPage /></PublicLayout>} />
         <Route path="/registrar" element={<PublicLayout toggleTheme={toggleTheme} currentTheme={theme}><RegistroPage /></PublicLayout>} />
@@ -72,6 +74,8 @@ function App() {
           <Route path="faturas" element={<Faturas />} />
           <Route path="suporte" element={<Suporte />} />
           <Route path="minha-conta" element={<MinhaConta />} />
+          {/* Adicionei de volta a rota status que estava no seu DashboardLayout */}
+          <Route path="status" element={<div className="container section-padding"><h2>Status dos Serviços (Em breve)</h2></div>} /> 
         </Route>
 
         {/* Catch-all Route */}

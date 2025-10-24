@@ -1,36 +1,27 @@
+/* src/index.css (Atualizado com Nova Paleta) */
+
+/* --- Variáveis de Cores e Fontes --- */
 :root {
-  /* Light Theme (Padrão - SUAVIZADO) */
-  --color-primary: #6d28d9;      /* Roxo Principal */
-  --color-primary-dark: #5b21b6;  /* Roxo Escuro (para hover) */
-  --color-primary-light: #f5f3ff;/* Roxo bem claro (para fundos) */
-  --color-accent: #F97316;       /* Laranja (para logo e avatar) */
-  --color-accent-dark: #ea580c;  /* Laranja Escuro (para hover) */
+  /* Nova Paleta Azul - Light Theme */
+  --color-primary: #602CFD;      /* Blue Medium (Roxo/Azul Principal) */
+  --color-primary-dark: #29196C;  /* Blue Dark (para hover/escuro) */
+  --color-primary-light: #E0E7FF; /* Azul bem claro (Adaptação para fundo) */
+  --color-accent: #602cfd;       /* Blue Light (usado como acento ou subtil) */
+  --color-accent-dark: #555353;  /* Black 200 (para hover do acento) */
 
-  --color-dark: #1f2937;      /* Texto principal escuro (um pouco mais suave que preto puro) */
-  --color-secondary: #4b5563; /* Texto secundário (cinza médio-escuro) */
-  --color-subtle: #6B7281;    /* Texto subtil (cinza médio) */
-  
-  /* --- FUNDOS SUAVIZADOS --- */
-  --color-background: #f1f5f9; /* Fundo principal: Branco levemente azulado/acinzentado (era #ffffff) */
-  --color-background-light: #f1f5f9c5; /* Fundo secundário: Cinza um pouco mais perceptível (era #f9fafb) */
-  
-  /* --- BORDAS SUAVIZADAS --- */
-  --color-border: #e2e8f0;    /* Bordas um pouco mais suaves (era #e5e7eb) */
-  --color-border-hover: #cbd5e1; /* Borda Hover (era #d1d5db) */
+  --color-dark: #0E0E12;      /* Black 000 (Texto principal escuro) */
+  --color-secondary: #1D1D1D; /* Black 100 (Texto secundário) */
+  --color-subtle: #555353;    /* Black 200 (Texto subtil) */
+  --color-background: #ffffff; /* Fundo principal branco */
+  --color-background-light: #f8f9fa; /* Fundo secundário cinza muito claro */
+  --color-border: #e2e8f0;    /* Bordas claras (Adaptação) */
+  --color-border-hover: #cbd5e1; /* Borda Hover (Adaptação) */
 
-  /* Cores de Texto Invertido (para botões roxos/laranjas) */
-  --color-text-inverted: #ffffff; /* Branco */
-  /* Cores de Texto Base (usado em index.css e body) */
-  --color-text-base: var(--color-dark); /* Texto principal */
-  --color-text-muted: var(--color-subtle); /* Texto mais claro */
-  /* Cores de Fundo Base (usado em botões, inputs, etc.) */
-  --color-bg-base: #ffffff; /* Branco puro para elementos como cards e inputs */
-  --color-bg-subtle: #f9fafb; /* Cinza bem claro para hover de botões brancos */
-
-  /* Cores de Hover para botões contornados */
-  --color-primary-hover-bg: rgba(109, 40, 217, 0.08); /* Fundo roxo levemente mais visível */
-  --color-accent-hover-bg: rgba(249, 115, 22, 0.08); /* Fundo laranja levemente mais visível */
-
+  /* Cores específicas mantidas (ex: logout) */
+  --color-danger: #ef4444;
+  --color-danger-light: #fef2f2;
+  --color-danger-border: #fecaca;
+  --color-text-inverted: #ffffff; /* Texto branco */
 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -47,27 +38,38 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- Dark Theme --- (Não mude esta parte) */
+/* --- Dark Theme --- */
 [data-theme='dark'] {
-  --color-dark: #f9fafb;      /* Texto principal claro (era gray-50) */
-  --color-secondary: #d1d5db; /* Texto secundário claro (era gray-300) */
-  --color-subtle: #9ca3af;    /* Texto subtil claro (era gray-400) */
-  --color-background: #0b0c0e; /* Fundo principal escuro (era gray-900) */
-  --color-background-light: #0b0c0e; /* Fundo secundário escuro (era gray-800) */
-  --color-border: #374151;    /* Bordas escuras (era gray-700) */
-  --color-border-hover: #4b5563;  /* Borda Hover (era gray-600) */
+  /* Nova Paleta Azul - Dark Theme */
+  --color-primary: #602CFD;      /* Blue Medium */
+  --color-primary-dark: #70688F;  /* Blue Light (Hover no escuro) */
+  --color-primary-light: rgba(96, 44, 253, 0.1); /* Transparência do Blue Medium */
+  --color-accent: #70688F;       /* Blue Light */
+  --color-accent-dark: #555353;  /* Black 200 */
 
-  /* Mantém as cores primárias e de accent iguais, ajuste se necessário */
-  /* --color-primary: #8b5cf6; */ /* Exemplo: Roxo mais claro */
-  /* --color-accent: #fb923c; */ /* Exemplo: Laranja mais claro */
+  --color-dark: #f8f9fa;      /* Texto principal claro */
+  --color-secondary: #cbd5e1; /* Texto secundário claro */
+  --color-subtle: #70688F;    /* Blue Light (Texto subtil) */
+  --color-background: #0E0E12; /* Black 000 (Fundo principal) */
+  --color-background-light: #1D1D1D; /* Black 100 (Fundo secundário) */
+  --color-border: #555353;    /* Black 200 (Bordas) */
+  --color-border-hover: #70688F;  /* Blue Light (Borda Hover) */
+
+  /* Cores específicas mantidas (ex: logout) */
+  --color-danger: #f87171; /* Vermelho mais claro */
+  --color-danger-light: rgba(239, 68, 68, 0.1);
+  --color-danger-border: rgba(239, 68, 68, 0.3);
+
+  --color-text-inverted: #ffffff;
 
   /* Sombras ajustadas para dark mode */
   --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 0.03);
-  --shadow-md: 0 4px 6px -1px rgb(255 255 255 / 0.05), 0 2px 4px -2px rgb(255 255 255 / 0.05);
-  --shadow-lg: 0 10px 15px -3px rgb(255 255 255 / 0.05), 0 4px 6px -4px rgb(255 255 255 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
 
-  --color-primary-hover-bg: rgba(109, 40, 217, 0.15);
-  --color-accent-hover-bg: rgba(249, 115, 22, 0.15);
+  --color-primary-hover-bg: rgba(96, 44, 253, 0.1); /* Transparência do Blue Medium */
+  --color-accent-hover-bg: rgba(112, 104, 143, 0.1); /* Transparência do Blue Light */
+
 
   color-scheme: dark;
 }
@@ -83,24 +85,28 @@ body {
   margin: 0;
   font-family: var(--font-family-base);
   background-color: var(--color-background); /* Usa variável */
-  color: var(--color-text-base); /* Usa variável */
-  line-height: 1.5;
+  color: var(--color-dark); /* Usa variável de texto principal */
+  line-height: 1.6; /* Aumenta um pouco o espaçamento */
   min-width: 320px;
 }
 
 a {
-  color: inherit;
+  color: var(--color-primary); /* Links usam a cor primária */
   text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+a:hover {
+    color: var(--color-primary-dark);
 }
 
 /* --- Estrutura do App --- */
-.app-layout { /* Usado para o layout público */
+.app-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 main {
-  flex-grow: 1; /* Garante que o conteúdo principal ocupe o espaço */
+  flex-grow: 1;
 }
 
 /* --- Classes Utilitárias de Layout --- */
@@ -113,29 +119,28 @@ main {
   padding-right: 1.5rem;
 }
 
-/* Espaçamento padrão das seções */
 .section-padding {
   padding: 4rem 0;
 }
 @media (min-width: 768px) {
   .section-padding {
-    padding: 6rem 0;
+    padding: 5rem 0; /* Reduz um pouco */
   }
 }
 
-/* Título padrão das seções */
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 .section-header h1, .section-header h2 {
-  font-size: 2.25rem;
-  font-weight: 600;
+  font-size: 2rem; /* Reduz um pouco */
+  font-weight: 700; /* Mais peso */
   color: var(--color-dark);
   margin-bottom: 0.75rem;
+  line-height: 1.3;
 }
 .section-header p {
-  font-size: 1.125rem;
+  font-size: 1.1rem; /* Reduz um pouco */
   color: var(--color-subtle);
   max-width: 42rem;
   margin: 0 auto;
@@ -143,19 +148,23 @@ main {
 
 /* --- BOTÕES GLOBAIS --- */
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  font-size: 1rem;
+  display: inline-flex; /* Usa inline-flex para alinhar ícones */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Espaço entre texto e ícone */
+  padding: 0.75rem 1.5rem; /* Ajusta padding */
+  font-size: 0.95rem; /* Ajusta tamanho */
   font-weight: 600;
   text-align: center;
-  border: 2px solid transparent;
+  border: 1px solid transparent; /* Usa borda de 1px */
   border-radius: 8px;
   cursor: pointer;
-  transition: all var(--transition-speed) ease; /* Transição geral */
+  transition: all var(--transition-speed) ease;
   text-decoration: none;
+  white-space: nowrap; /* Impede quebra de linha */
 }
 
-/* Botão Roxo Principal */
+/* Botão Azul Principal */
 .btn-primary-dark {
   background-color: var(--color-primary);
   color: var(--color-text-inverted);
@@ -164,9 +173,10 @@ main {
 .btn-primary-dark:hover {
   background-color: var(--color-primary-dark);
   border-color: var(--color-primary-dark);
+  box-shadow: 0 4px 10px rgba(96, 44, 253, 0.2); /* Sombra azul no hover */
 }
 
-/* Botão Laranja (Accent) */
+/* Botão Azul Claro (Accent) */
 .btn-accent {
     background-color: var(--color-accent);
     color: var(--color-text-inverted);
@@ -179,50 +189,42 @@ main {
 
 /* Botão Branco (Claro) */
 .btn-primary-light {
-  background-color: var(--color-bg-base); /* Usa variável de fundo */
+  background-color: var(--color-background);
   color: var(--color-primary);
-  box-shadow: var(--shadow-sm); /* Usa variável de sombra */
-  border-color: var(--color-border); /* Usa variável de borda */
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-border);
 }
 .btn-primary-light:hover {
-  background-color: var(--color-bg-subtle); /* Usa variável */
+  background-color: var(--color-background-light);
+  border-color: var(--color-border-hover);
 }
 
 /* Botão Branco Secundário (com Borda) */
 .btn-secondary {
-  background-color: var(--color-bg-base); /* Usa variável */
-  color: var(--color-text-base); /* Usa variável */
-  border-color: var(--color-border); /* Usa variável */
-  box-shadow: var(--shadow-sm); /* Usa variável */
+  background-color: var(--color-background);
+  color: var(--color-dark); /* Texto escuro */
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 .btn-secondary:hover {
-  background-color: var(--color-bg-subtle); /* Usa variável */
-  border-color: var(--color-border-hover); /* Usa variável */
+  background-color: var(--color-background-light);
+  border-color: var(--color-border-hover);
 }
 
-/* Botão Roxo Contornado */
+/* Botão Azul Contornado */
 .btn-secondary-outline {
   background-color: transparent;
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
 .btn-secondary-outline:hover {
-  background-color: var(--color-primary-hover-bg); /* Usa variável */
-  border-color: var(--color-primary-dark);
-  color: var(--color-primary-dark);
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
-/* --- Estilo Adicional (Referente ao Header do Dashboard) --- */
-/* Estilos para o container do texto (nome e email) no widget do utilizador */
-.user-info-text {
-  margin: 0;
-  padding: 0;
-  line-height: 1.3;
-  color: var(--color-text-base); /* Garante cor correta com tema */
-}
-.user-profile-widget .user-name {
-  color: var(--color-text-base); /* Garante cor correta com tema */
-}
-.user-profile-widget .user-email {
-  color: var(--color-text-muted); /* Garante cor correta com tema */
-}
+/* --- Estilo Adicional (Dashboard, etc.) --- */
+/* Mantém estilos específicos do dashboard como estavam */
+.user-info-text { margin: 0; padding: 0; line-height: 1.3; }
+.user-profile-widget .user-name { color: var(--color-dark); }
+.user-profile-widget .user-email { color: var(--color-subtle); }

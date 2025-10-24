@@ -1,0 +1,191 @@
+/* src/components/Design/CheckoutPage.css */
+
+.checkout-wrapper {
+  background-color: var(--color-background-light);
+  min-height: calc(100vh - 120px); /* Ajuste conforme header/footer */
+}
+
+.checkout-container {
+  max-width: 800px; /* Limita largura */
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+.back-link:hover {
+  color: var(--color-primary-dark);
+  transform: translateX(-3px);
+}
+
+.checkout-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.checkout-content {
+  display: grid;
+  grid-template-columns: 1fr; /* Uma coluna por padrão */
+  gap: 2rem;
+  background-color: var(--color-background);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* Resumo do Pedido */
+.order-summary h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.product-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.product-details h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 0.2rem;
+}
+.product-details p {
+  font-size: 0.9rem;
+  color: var(--color-subtle);
+}
+
+.product-price {
+  margin-left: auto; /* Empurra para a direita */
+  text-align: right;
+  white-space: nowrap;
+}
+.product-price span {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+.product-price small {
+  font-size: 0.85rem;
+  color: var(--color-subtle);
+  margin-left: 0.2rem;
+}
+
+.total-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 1.1rem;
+}
+.total-info strong {
+  color: var(--color-dark);
+  font-weight: 700;
+}
+
+
+/* Área de Confirmação */
+.confirmation-area h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 0.75rem;
+}
+.confirmation-area p {
+  font-size: 0.9rem;
+  color: var(--color-subtle);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+.confirmation-area p a {
+    text-decoration: underline;
+}
+
+.processing-error {
+    color: var(--color-danger) !important; /* Sobrescreve cor sutil */
+    font-weight: 500;
+    margin-top: -0.5rem; /* Ajusta espaço */
+}
+
+.btn-confirm {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.btn-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-primary); /* Mantém a cor base */
+  border-color: var(--color-primary);
+  box-shadow: none;
+}
+.btn-confirm svg {
+  margin-right: 0.5rem;
+}
+
+
+/* Estados de Loading/Erro da página inteira */
+.loading-state, .error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 400px;
+  color: var(--color-subtle);
+  padding: 2rem;
+}
+.loading-state p, .error-state p { margin-top: 1rem; font-size: 1.1rem; }
+.error-state h2 { color: var(--color-dark); margin-bottom: 0.5rem; }
+.error-state .btn { margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+.loading-state .animate-spin { color: var(--color-primary); }
+
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .checkout-content {
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    align-items: start; /* Alinha topo */
+  }
+  .confirmation-area {
+      /* Adiciona borda esquerda para separar visualmente */
+      padding-left: 2rem;
+      border-left: 1px solid var(--color-border);
+  }
+}
+
+@media (max-width: 768px) {
+    .checkout-wrapper.section-padding { padding: 2rem 0; }
+    .checkout-content { padding: 1.5rem; }
+    .checkout-container h1 { font-size: 1.75rem; margin-bottom: 1.5rem;}
+    .product-info { flex-direction: column; align-items: flex-start; text-align: left; }
+    .product-price { margin-left: 0; margin-top: 0.5rem; text-align: left;}
+    .confirmation-area { margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+}
